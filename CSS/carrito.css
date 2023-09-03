@@ -1,0 +1,224 @@
+/* -------------------- main ------------------------*/
+
+#carrito-header{
+    font-size: 2rem;
+    color: whitesmoke;
+    margin: 3% 13% 0% 13%;
+}
+
+#carrito-container{
+    margin: 3% 13% 3% 13%;
+    display: flex;
+    gap: 4%;
+}
+
+/*--------- cards ---------*/
+
+.carrito-card-container{
+    max-width: 66%;
+    min-width: 66%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.carrito-card{
+    
+    background-color:rgba(32,32,32,255);
+    display: flex;
+    color: rgba(144,144,144,255);
+    padding: 1% 1.5% 1% 1.5%;
+    gap: 3%;
+    border-radius: 3px;
+    align-items: center;
+}
+
+.carrito-card-imagen{
+    max-width: 25%;
+}
+
+.carrito-card-imagen img{
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.carrito-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.carrito-card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.carrito-card-info-categoria{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 50%;
+}
+
+#carrito-card-info-precio{
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+.carrito-card-info-categoria h3{
+    white-space: nowrap;
+    margin: 0% 3% 0% 0%;
+    font-size: 0.6rem;
+    background-color: rgba(55,55,55,255);
+    color: rgba(200,200,200,255);
+    border-radius: 5px;
+    padding: 2% 4% 2% 4%;
+}
+
+#carrito-card-info-titulo{
+    font-size: 1.3rem;
+    color: whitesmoke;
+}
+
+#carrito-card-info-titulo:hover{
+    text-decoration: underline 1px;
+}
+
+.carrito-card-info-clasificacion{
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.carrito-card-info-clasificacion h3{
+    font-size: 0.7rem;
+}
+
+.carrito-card-info-clasificacion img{
+    max-width: 7%;
+    max-height: 7%;
+}
+
+.carrito-card-footer{
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#carrito-card-plataforma{
+    font-size: 1rem;
+}
+
+.eliminarBoton{
+    font-size: 1rem;
+}
+
+.eliminarBoton:hover{
+    color: rgb(212, 212, 212);
+    text-decoration: underline 1px;
+    cursor: pointer;
+}
+
+/*------ Resumen de Compra ------*/
+
+.carrito-info{
+    color:whitesmoke;
+}
+
+.carrito-info-header {
+    margin-bottom: 8%;
+}
+
+.carrito-info-header h2{
+    font-size: 1.5rem;
+}
+
+.carrito-info-calculo{
+    display: flex;
+    flex-direction: column;
+}
+
+.carrito-info-calculo-item{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 7%;
+}
+
+.carrito-info-calculo-item h2{
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+#impuesto{
+    margin-left: 10%;
+    color: rgba(144,144,144,255);
+}
+
+#subtotal-container{
+    margin: 2% 0% 4% 0%;
+}
+
+#boton-comprar{
+    background-color: rgba(0,116,228,255);
+    color: white;
+    padding: 4.5%;
+    border-radius: 5px;
+    border: none;
+}
+
+#boton-comprar:hover{
+    background-color: rgba(30,146,258,255);
+}
+
+/* ------------- Carrito null -------------- */
+
+.carrito-null-container{
+    margin: 5% 13% 5% 13%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.carrito-null-container h2{
+    margin: 3% 0% 2% 0%;
+    font-size: 1.7rem;
+}
+
+.carrito-null-container a{
+    color: rgba(150,150,150,255);
+}
+
+.carrito-null-container a:hover{
+    color: whitesmoke;
+}
+
+
+.material-symbols-outlined{
+    font-size: 2rem;
+}
+
+.modal-content{
+    color: whitesmoke;
+    background-color: rgba(42,42,42,255);
+}
+
+.carrito-card-header-precio{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5%;
+    min-width: 30%;
+    margin: 0;
+    padding: 0;
+}
+
+.carrito-card-header h5{
+    font-size: 0.9rem;
+    background-color: rgba(0,116,228,255);
+    border-radius: 5px;
+    color: whitesmoke;
+    padding: 0% 5% 0% 5%;
+}

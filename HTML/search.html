@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unaj E-Commerce</title>
+    <link rel="icon" href="../Imagenes/logo.png">
+    <link rel="stylesheet" href="../CSS/general.css">
+    <link rel="stylesheet" href="../CSS/search.css">
+    <script src="https://kit.fontawesome.com/120cdd133c.js" crossorigin="anonymous"></script>
+    <script type="module" src="../JS/search.js"></script>
+</head>
+<body>
+  <header id="Menu">
+  </header>
+
+    <main>
+        
+        <section id="categorias-populares">
+            <h2>Generos Populares</h2>
+            <div id="categorias-populares-container">
+            </div>
+        </section>
+
+        <section id="seccion-principal">
+            <div id="seccion-principal-header">
+                <div id="left-header">
+                    <h2>Productos Filtrados</h2>
+                </div>
+                <div id="right-header">
+                    <h2>Filtros</h2>
+                    <a>Limpiar</a>
+                </div>
+            </div>
+            <div id="container-principal">
+                <div id="productos-filtrados">
+                </div>
+
+                <aside id="filtros-container">
+                    <div id="filtros">
+                        <div id="barra-filtro">
+                            <input type="search" id="filtro-input" name="Q" placeholder="Busqueda Avanzada..."  aria-label="Search">
+                            <button type="button" id = "searchButton"><i id="lupa" class="fas fa-search"></i></button>
+                        </div>
+
+                        <hr>
+                        <div class="dropdown">
+                            <label id="rangoLabel"> <b>Rango de precios</b></label>
+                            <div class="rango">
+                                <div class="precios">
+                                    <b>$</b>
+                                    <input type="number"  id="minPrice" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  min="1" pattern="^[0-9]+" placeholder="Min"></input>
+                                </div>
+                                <div class="precios">
+                                    <b>$</b>
+                                    <input type="number" id="maxPrice" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"    min="1" pattern="^[0-9]+" placeholder="Max"></input>
+                                </div>
+                            </div>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="dropdown">
+                            <select class="selects"  id="selectCategoria" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="Plataforma">
+                            <option value="null" selected>Categoria</option>
+                        </select>
+                        </div>
+                        <hr>
+                </aside>
+            </div>
+
+        </section>
+    </main>
+
+
+    <footer id="Contacto">
+    </footer>
+</body>
+
+<a href="./product.html"></a>
+</html>

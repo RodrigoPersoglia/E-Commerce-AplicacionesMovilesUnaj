@@ -1,0 +1,98 @@
+/*-------------------------- main ----------------------*/
+
+main{
+    background-color: rgba(18,18,18,255);
+}
+
+#portada{
+    margin: 10% 13% 5% 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#portada img{
+    width: 90%;
+    height: auto;
+}
+
+/*-------------------- Varios ----------------------*/
+
+#varios-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 13% 5% 13%;
+    color: white;
+}
+
+.varios-subcontainer{
+    min-width: 30%;
+    padding: 1%;
+}
+
+.varios-subcontainer:hover{
+    min-width: 30%;
+    background-color: rgba(30,30,30,255);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.varios-subcontainer h2{
+    font-size: 1rem;
+}
+
+.varios-subcontainer button{
+    font-size: 0.9rem;
+    padding: 1% 5% 1% 5%;
+    background-color: rgba(18,18,18,255);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin-right: 5%;
+}
+.varios-subcontainer-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.varios-{
+    border-radius: 20px;
+    padding: 4% 3% 2% 6%;
+    display: flex;
+    transition: 0.2s;
+}
+
+.varios-:hover{
+    background-color: rgba(42,42,42,255);
+}
+
+.varios- img{
+    border-radius: 5px;
+    width: 112.5px;
+    height: 75px;
+}
+
+.varios--info{
+    margin: 0% 0% 0% 6%;
+    min-width: 50%;
+}
+.varios--info h2{
+    height: 64%;
+    display: block;
+}
+
+.varios--info-precio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    display: block;
+}
+
+.varios- h3{
+    font-size: 1rem;
+}
+

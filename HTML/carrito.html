@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/general.css">
+    <link rel="stylesheet" href="../CSS/carrito.css">
+    <script src="https://kit.fontawesome.com/120cdd133c.js" crossorigin="anonymous"></script>
+    <title>Unaj E-Commerce</title>
+    <link rel="icon" href="../Imagenes/logo.png">
+    <script type="module" src="../JS/carrito.js"></script>
+</head>
+<body>
+    <header id="Menu">
+    </header>
+
+    <main>
+        <section id="carrito-header">
+            <h2>Mi Carrito</h2>
+        </section>
+
+        <section id="carrito">
+            <div id="carrito-container">
+
+                <div class="carrito-card-container" id="carrito-card-container">
+                </div>
+    
+                <div class="carrito-info">
+                    <div class="carrito-info-header">
+                        <h2>Resumen de Compra</h2>
+                    </div>
+                    <div class="carrito-info-calculo">
+                        <div class="carrito-info-calculo-item">
+                            <h2>Subtotal</h2>
+                            <h2 id="precio-total"></h2>
+                        </div>
+                        <div class="carrito-info-calculo-item">
+                            <h2>Descuento</h2>
+                            <h2 id="descuento"></h2>
+                        </div>
+                        <div class="carrito-info-calculo-item">
+                            <h2>Impuestos</h2>
+                            <h2 id="impuesto"></h2>
+                        </div>
+                        <hr>
+                        <div id="subtotal-container" class="carrito-info-calculo-item">
+                            <h2><b>Total</b></h2>
+                            <h2 id="subtotal"><b></b></h2>
+                        </div>
+                        <button id="boton-comprar" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><b>Comprar</b></button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="carrito-null">
+            <div class="carrito-null-container">
+                <img src="../Imagenes/CarritoNull.jpeg" alt="Carro Not Found">
+                <h2>Tu carrito está vacio</h2>
+                <a href="./index.html">Comprar</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="Contacto">
+    </footer>
+</body>
+</html>
