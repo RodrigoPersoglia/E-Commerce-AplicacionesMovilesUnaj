@@ -23,7 +23,7 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0% 13% 5% 13%;
+    margin: 0% 5% 5% 5%;
     color: white;
 }
 
@@ -96,3 +96,41 @@ main{
     font-size: 1rem;
 }
 
+@media (max-width: 1000px) {
+    #varios-container{
+        flex-direction: column;
+        margin: 0% 2% 5% 2%;
+    }
+    .varios-subcontainer{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        
+    }
+
+    #varios-subcontainer-body-1,#varios-subcontainer-body-2,#varios-subcontainer-body-3{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-evenly;
+    }
+    .varios-{
+        width: 30vw;
+        min-width: 250px;
+    }
+  }
+
+  @media (max-width: 635px) {
+    #varios-subcontainer-body-1,#varios-subcontainer-body-2,#varios-subcontainer-body-3{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+    }
+    .varios-{
+        width: 100%;
+    }
+  }

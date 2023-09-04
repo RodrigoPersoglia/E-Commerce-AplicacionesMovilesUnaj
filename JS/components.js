@@ -11,10 +11,10 @@ export const NavMenu = () => {
             <input id="Busqueda" type="text" placeholder="Buscar..." name="product">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <a href="../HTML/index.html"><i class="fas fa-home"></i> Home</a>
-          <a href="../HTML/search.html"><i class="fas fa-sliders-h"></i> Busqueda</a>
+          <a href="../HTML/index.html"><i class="fas fa-home"></i><p>Home</p></a>
+          <a href="../HTML/search.html"><i class="fas fa-sliders-h"></i><p>Busqueda</p></a>
         </div>
-        <a id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+        <a id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a>
     </div>`
 }
 

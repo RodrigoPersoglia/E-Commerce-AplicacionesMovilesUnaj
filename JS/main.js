@@ -3,9 +3,9 @@ import {NavMenu,Footer,CardVarios} from './components.js'
 
 const header = document.getElementById("Menu");
 const contacto = document.getElementById("Contacto");
-const subcontainer1 = document.getElementById("subConteiner1");
-const subcontainer2 = document.getElementById("subConteiner2");
-const subcontainer3 = document.getElementById("subConteiner3");
+const subcontainer1 = document.getElementById("varios-subcontainer-body-1");
+const subcontainer2 = document.getElementById("varios-subcontainer-body-2");
+const subcontainer3 = document.getElementById("varios-subcontainer-body-3");
 
 
 window.onload = () => {
@@ -23,6 +23,7 @@ function getRandomInt(min, max) {
 
 
 const CargarVarios = () => {
+    console.log(subcontainer1)
     fetch(`https://fakestoreapi.com/products`)
     .then(response => response.json())
     .then(data => {
