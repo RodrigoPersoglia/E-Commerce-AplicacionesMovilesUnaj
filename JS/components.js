@@ -101,7 +101,7 @@ export const CardCategory = (nombre,imagenUrl) => {
   <div class="categorias-populares-subcontainer-imagenes">
       <img src="${imagenUrl}" alt="producto">
   </div>
-  <h3 id="nombre-categoria">${nombre}</h3>
+  <h3 class="nombre-categoria">${nombre}</h3>
 </div></a>`
 }
 
