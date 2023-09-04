@@ -97,7 +97,6 @@ function getQueryParams() {
        return urlParams;
 };
 
-    
 const Search = () => {
     let searchProduct = `%${input.value}%`;
     let searchCategory = selectCategorias.selectedOptions[0].textContent;
@@ -107,7 +106,8 @@ const Search = () => {
     .then(response => response.json())
     .then(data => {
     data.forEach(e => {
-        if(isLike(e.title,searchProduct) && (searchCategory == 'Categoria' || e.category == searchCategory)){
+        if(isLike(e.title,searchProduct) && (searchCategory == 'Categoria' || e.category == searchCategory)
+        && (minPrice == null|| e.price >= minPrice) && (maxPrice == null|| e.price <= maxPrice)){
             let bonificacion = 0;
             ProductosFiltrados.innerHTML +=Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image);
         }
@@ -145,8 +145,8 @@ const cargarCategorias = () => {
 }
 
 const isLike = (string, pattern) => {
-    const escapedPattern = pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const escapedPattern = pattern.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regexPattern = escapedPattern.replace(/%/g, '.*').replace(/_/g, '.');
     const regex = new RegExp('^' + regexPattern + '$');
-    return regex.test(string);
+    return regex.test(string.toLowerCase());
   }

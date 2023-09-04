@@ -23,6 +23,7 @@ main{
 
 .rango{
     display: flex;
+    gap: 10px;
 }
 
 #categorias-populares-container a{
@@ -269,10 +270,18 @@ main{
     color: #808080;
     margin-bottom: 0.3rem;
     margin-left: 5%;
-
-
+    font-size: 0.9rem;
 }
 
+.precios{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.precios b{
+    color: #808080;
+}
 
 #dropdownMenuButton:hover{
     color: white
