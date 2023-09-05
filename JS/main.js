@@ -23,7 +23,6 @@ function getRandomInt(min, max) {
 
 
 const CargarVarios = () => {
-    console.log(subcontainer1)
     fetch(`https://fakestoreapi.com/products`)
     .then(response => response.json())
     .then(data => {
