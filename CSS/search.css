@@ -2,12 +2,12 @@
 /*-------------------------- main ----------------------*/
 
 main{
-    background-color: rgba(18,18,18,255);
+    background-color: #D9D9D9;
 }
 
 #categorias-populares{
     margin: 12% 5% 5% 5%;
-    color: white
+    color: #262626
     
 }
 
@@ -36,7 +36,7 @@ main{
     max-width: 23%;
     padding: 2% 2% 2% 2%;
     margin: 0% 0% 0% 0%;
-    background-color: rgba(42,42,42,255);
+    background-color: white;
     border-radius: 3px;
     transition: 0.3s;
 }
@@ -44,13 +44,14 @@ main{
     
     width: 100%;
     height: 100%;
-    color: whitesmoke;
+    color: #262626;
 }
 
 
 
 #categorias-populares-container a:hover{
-    background-color: rgba(70,70,70,255);
+    box-shadow: 5px 5px 10px #888888;
+    border: 0.25px solid #737373;
 }
 
 .categorias-populares-subcontainer-imagenes{
@@ -87,12 +88,12 @@ main{
 
 #seccion-principal a{
     text-decoration: none;
-    color: whitesmoke;
+    color: #262626;
 }
 
 #seccion-principal-header{
     display: flex;
-    color: whitesmoke;
+    color: #262626;
 }
 
 #seccion-principal-header h2{
@@ -112,7 +113,7 @@ main{
 
 #right-header a{
     text-decoration: none;
-    color: whitesmoke;
+    color: #262626;
     transition: 0.2s;
 }
 
@@ -140,22 +141,22 @@ main{
 
 .producto-info-1{
     width: 28%;
-    color: white;
+    color: #262626;
     margin: 0% 0% 3% 2%;
     border-radius: 5px;
     transition: 0.3s;
-    background-color: #181818;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid #F2F2F2;
 }
 
 .producto-info-1:hover{
     cursor: pointer;
     transition: 1s;
-    background-color: rgba(70,70,70,255);
-    border: 0.1px solid wheat;
-    transform: scale(1.08);
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px #888888;
 }
 
 
@@ -209,11 +210,11 @@ main{
 }
 
 #filtro-input{
-    background-color: rgba(32,32,32,255);
+    background-color: #F2F2F2;
     border: none;
     border-radius: 3px;
     padding: 4% 0% 4% 2%;
-    color: whitesmoke;
+    color: #262626;
     height: 35px;
     width: 87%;
     
@@ -228,7 +229,7 @@ main{
 #searchButton{
     background-color: transparent;
     border: none;
-    color: whitesmoke;
+    color: #262626;
 }
 
 #filtro-input:focus{
@@ -249,32 +250,32 @@ main{
 }
 
 #barra-filtro{
-    color: lightgrey;
-    background-color: rgba(32,32,32,255);
+    color: #262626;
+    background-color: #F2F2F2;
     padding: 0% 0% 0% 5%;
     border-radius: 4px;
     display: flex;
 }
 
 #dropdownMenuButton , .selects, #minPrice, #maxPrice{
-    background-color: rgba(18,18,18,255);
+    background-color: #D9D9D9;
     border: none;
     width: 100%;
     text-align: left;
     padding: 3%;
-    color: grey;
+    color: #262626;
     padding: 8% 0% 8% 5%;
     font-weight: bold;
 }
 
 #minPrice, #maxPrice{
-    background-color: #202020;
+    background-color: #F2F2F2;
     margin: 2px;
     border-radius: 4px;
 }
 
 #rangoLabel{
-    color: #808080;
+    color: #262626;
     margin-bottom: 0.3rem;
     margin-left: 5%;
     font-size: 0.9rem;
@@ -287,7 +288,7 @@ main{
     gap: 2px;
 }
 .precios b{
-    color: #808080;
+    color: #262626;
 }
 
 #dropdownMenuButton:hover{

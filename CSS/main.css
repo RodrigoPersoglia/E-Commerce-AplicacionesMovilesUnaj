@@ -1,7 +1,7 @@
 /*-------------------------- main ----------------------*/
 
 main{
-    background-color: rgba(18,18,18,255);
+    background-color: #D9D9D9;
 }
 
 #portada{
@@ -34,9 +34,11 @@ main{
 
 .varios-subcontainer:hover{
     min-width: 30%;
-    background-color: rgba(30,30,30,255);
+
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: 5px 5px 10px #888888;
+    border: 0.25px solid #737373;
 }
 
 .varios-subcontainer h2{
@@ -46,7 +48,7 @@ main{
 .varios-subcontainer button{
     font-size: 0.9rem;
     padding: 1% 5% 1% 5%;
-    background-color: rgba(18,18,18,255);
+    background-color: #D9D9D9;
     color: white;
     border-radius: 5px;
     border: 1px solid white;
@@ -54,19 +56,30 @@ main{
 }
 .varios-subcontainer-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    color: #262626;
+}
+
+.varios-subcontainer-header h2{
+    margin-bottom: 3%;
 }
 
 .varios-{
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 4% 3% 2% 6%;
     display: flex;
     transition: 0.2s;
+    background-color: white;
+    margin-bottom: 2%;
+    color: #262626;
 }
 
 .varios-:hover{
-    background-color: rgba(42,42,42,255);
+    cursor: pointer;
+    transition: 1s;
+    transform: scale(1.01);
+    box-shadow: 5px 5px 10px #888888;
 }
 
 .varios- img{
@@ -119,6 +132,7 @@ main{
     .varios-{
         width: 30vw;
         min-width: 250px;
+        margin: 0.5%;
     }
   }
 
