@@ -107,15 +107,16 @@ export const CardCategory = (nombre,imagenUrl) => {
 
 export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categoria,stock) => {
   return `<div id="producto">
-  <h2>${nombre}</h2>
-  
-  <div class="descripcion">
-      <h3>Descripcion:</h3>
-      <p>${descripcion}</p>
+  <div class="producto-header">
+    <h2>${nombre}</h2>
+    <img src="${portada}" alt="Icono del Producto">
+    <div class="descripcion">
+        <h3>Descripcion:</h3>
+        <p>${descripcion}</p>
+    </div>
   </div>
-</div>
-<div id="info-producto">
-  <img src="${portada}" alt="Icono del Producto">
+  <div id="info-producto">
+  
   <div id="precio">
       <h2>${precio}</h2>
   </div>
@@ -131,6 +132,8 @@ export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categori
       <div class="caracteristicas"><p>Stock:</p><span>${stock}</span></div>
       <hr>
   </div>
+</div>
+
 </div>`
 }
 
