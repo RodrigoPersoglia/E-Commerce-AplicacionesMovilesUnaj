@@ -69,6 +69,12 @@ justify-content: space-evenly;
     border-radius: 3px;
 }
 
+#addBTN{
+    background-color:  white;
+    color: rgba(0,116,228,255);
+    border: 1px solid rgba(0,116,228,255);
+}
+
 #caracteristicas{
     display: grid;
     align-items: center;
@@ -121,7 +127,7 @@ header{
     background-color: #121212
 }
 
-@media (max-width: 611px) {
+@media (max-width: 700px) {
 
     #producto {
         flex-direction: column;
@@ -129,11 +135,13 @@ header{
         
         .producto-header{
             max-width: 100vw;
+            margin: 0;
         }
 
         #producto img{
-            width: 75vw;
-            height: auto;
+            width: auto;
+            max-width: 90%;
+            height: 60vh;
         }
 
   }
