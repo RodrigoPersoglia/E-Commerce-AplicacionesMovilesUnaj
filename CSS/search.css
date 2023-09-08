@@ -135,6 +135,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
+    justify-content: space-evenly; 
 }
 
 .producto-info-1{
@@ -347,7 +348,7 @@
     #productos-filtrados{
         min-width: 100%;
         max-width: 100%;
-        justify-content: space-evenly;
+        justify-content: space-evenly; 
     }
     #filtros{
         display: flex;
@@ -392,4 +393,12 @@
     }
 
   }
+
+  @media (max-width: 500px){
+    .producto-info-1{
+        
+        width: 100%;
+        height: auto;
+    }
+  } 
   

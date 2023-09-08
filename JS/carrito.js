@@ -90,33 +90,6 @@ const RenderizarProductos = (id,incremental) => {
     });
 }
 
-
-const postCompra = (importe) => {
-    let date = new Date();
-
-    let jsonBody={
-        "usuarioId": 1,
-        "fechaHora": date,
-        "importe": importe
-      }
-      fetch(`https://localhost:7300/Api/Compras`,{
-          method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(jsonBody)  
-      })
-      .then((httpResponse)=>{
-          if(httpResponse.ok)
-              return httpResponse.json()
-      })
-      
-      .then(body => {
-      })
-}
-
-
 const EjecutarCompra = () => {
-    postCompra(subtotal+imp-descuento)  
+    alert('La compra fue realizada con exito.');
 }
