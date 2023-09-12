@@ -1,4 +1,4 @@
-import {NavMenu,Footer,CardVarios} from './components.js'
+import {NavMenu,NavMenu2,Footer,CardVarios} from './components.js'
 
 
 const header = document.getElementById("Menu");
@@ -6,12 +6,13 @@ const contacto = document.getElementById("Contacto");
 const subcontainer1 = document.getElementById("varios-subcontainer-body-1");
 const subcontainer2 = document.getElementById("varios-subcontainer-body-2");
 const subcontainer3 = document.getElementById("varios-subcontainer-body-3");
-
+let shortMenu = false;
 
 window.onload = () => {
     header.innerHTML=NavMenu();
     contacto.innerHTML=Footer();
     CargarVarios();
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }
 
 function getRandomInt(min, max) {
@@ -20,7 +21,18 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-
+function MostrarMenu(){
+    if(shortMenu) {
+        header.innerHTML=NavMenu();
+        shortMenu = false;
+    }
+    else{
+        header.innerHTML=NavMenu2();
+        shortMenu = true;
+    }
+    
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
+}
 
 const CargarVarios = () => {
     fetch(`https://fakestoreapi.com/products`)

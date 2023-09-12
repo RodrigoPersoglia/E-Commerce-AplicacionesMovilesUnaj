@@ -1,9 +1,10 @@
-import {NavMenu,Footer,CardProductoPrincipal} from './components.js'
+import {NavMenu,NavMenu2,Footer,CardProductoPrincipal} from './components.js'
 
 const header = document.getElementById("Menu");
 const contacto = document.getElementById("Contacto");
 const main = document.getElementById("main");
 let productoId=null;
+let shortMenu = false;
 
 window.onload = () => {
     header.innerHTML=NavMenu();
@@ -11,6 +12,7 @@ window.onload = () => {
     const parametros = getQueryParams();
     if(parametros.id!=undefined){productoId=parametros.id;}
     CargarProductos();
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }
 
 const agregar = () => {
@@ -51,4 +53,17 @@ function getQueryParams() {
 const postCarrito = (ruta) => {
     alert('Producto Agregado');
     location.href=ruta;
+}
+
+function MostrarMenu(){
+    if(shortMenu) {
+        header.innerHTML=NavMenu();
+        shortMenu = false;
+    }
+    else{
+        header.innerHTML=NavMenu2();
+        shortMenu = true;
+    }
+    
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }

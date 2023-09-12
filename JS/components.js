@@ -11,11 +11,27 @@ export const NavMenu = () => {
             <input id="Busqueda" type="text" placeholder="Buscar..." name="product">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
-          <a href="../HTML/index.html"><i class="fas fa-home"></i><p>Home</p></a>
-          <a href="../HTML/search.html"><i class="fas fa-sliders-h"></i><p>Busqueda</p></a>
+          <a class="opcionesMenu" href="../HTML/index.html"><i class="fas fa-home"></i><p>Home</p></a>
+          <a class="opcionesMenu" href="../HTML/search.html"><i class="fas fa-sliders-h"></i><p>Busqueda</p></a>
         </div>
-        <a id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a>
+        <a class="opcionesMenu" id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a>
+        <i id="menu-oculto" class="fas fa-bars"></i>
     </div>`
+}
+
+export const NavMenu2 = () => {
+  return `<div id="top-header">
+      <div id="logo">
+          <img src="../Imagenes/logo.png" alt="logo">
+          <h1>Unaj E-Commerce</h1>
+      </div>
+  </div>
+  <div id="header-container">      
+        <a class="opcionesMenu2" href="../HTML/index.html"><i class="fas fa-home"></i><p>Home</p></a>
+        <a class="opcionesMenu2" href="../HTML/search.html"><i class="fas fa-sliders-h"></i><p>Busqueda</p></a>
+        <a class="opcionesMenu2" id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a> 
+        <a id="menu-oculto" class="opcionesMenu2" href="#"><i class="fas fa-times"></i><p>Cerrar</p></a>
+  </div>`
 }
 
 export const Footer = () => {
@@ -150,7 +166,6 @@ export const CardCarrito = (id,portada,precio,nombre,desc,categoria,descripcion)
                     <h3>${categoria}</h3>
                 </div>
                 <div class="carrito-card-header-precio">
-                <h5 id="carrito-card-info-desc">${desc}%</h5>
                 <h2 id="carrito-card-info-precio">${precio}</h2>
               </div>
             </div>

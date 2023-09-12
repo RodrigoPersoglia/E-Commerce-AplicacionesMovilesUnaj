@@ -27,13 +27,9 @@ justify-content: space-evenly;
     font-size: 150%;
 }
 
-#descripcion{
-    display: flex;
-    justify-content: start;
-}
 
-#descripcion h3{
-    font-size: 120%;
+.descripcion h3{
+    font-size: 1.3rem;
     text-align: center;
     margin:3% 3% 3% 1% ;
 }

@@ -1,4 +1,4 @@
-import {NavMenu,Footer,CardCarrito} from './components.js'
+import {NavMenu,NavMenu2,Footer,CardCarrito} from './components.js'
 
 const header = document.getElementById("Menu");
 const contacto = document.getElementById("Contacto");
@@ -11,7 +11,7 @@ const botonComprar= document.getElementById("boton-comprar");
 const carritovacio= document.getElementById("carrito-null");
 const carritoInfo= document.getElementById("carrito");
 var botones = document.querySelectorAll(".eliminarBoton");
-
+let shortMenu = false;
 
 let subtotal = 0;
 let imp=0;
@@ -22,6 +22,7 @@ window.onload = () => {
     contacto.innerHTML=Footer();
     CargarCarrito(); 
     botonComprar.onclick = EjecutarCompra;  
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }
 
 const CargarCarrito = () => {
@@ -92,4 +93,17 @@ const RenderizarProductos = (id,incremental) => {
 
 const EjecutarCompra = () => {
     alert('La compra fue realizada con exito.');
+}
+
+function MostrarMenu(){
+    if(shortMenu) {
+        header.innerHTML=NavMenu();
+        shortMenu = false;
+    }
+    else{
+        header.innerHTML=NavMenu2();
+        shortMenu = true;
+    }
+    
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }

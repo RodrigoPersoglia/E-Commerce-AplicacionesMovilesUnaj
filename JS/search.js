@@ -1,4 +1,4 @@
-import {NavMenu,Footer,CardCategory,Card} from './components.js'
+import {NavMenu,NavMenu2,Footer,CardCategory,Card} from './components.js'
 
 let minPrice = null;
 let maxPrice = null;
@@ -15,6 +15,7 @@ const input = document.getElementById("filtro-input");
 const precioMinimo = document.getElementById("minPrice");
 const precioMaximo = document.getElementById("maxPrice");
 const limpiarFiltros = document.getElementById("right-header");
+let shortMenu = false;
 
 window.onload = () => {
     header.innerHTML=NavMenu();
@@ -27,6 +28,7 @@ window.onload = () => {
     if(parametros.category!=undefined){category+=parametros.category;}
     CargarProductos();
     limpiarFiltros.onclick = Limpiar;
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
 }
 
 const Limpiar = () => {
@@ -150,3 +152,16 @@ const isLike = (string, pattern) => {
     const regex = new RegExp('^' + regexPattern + '$');
     return regex.test(string.toLowerCase());
   }
+
+  function MostrarMenu(){
+    if(shortMenu) {
+        header.innerHTML=NavMenu();
+        shortMenu = false;
+    }
+    else{
+        header.innerHTML=NavMenu2();
+        shortMenu = true;
+    }
+    
+    document.getElementById("menu-oculto").onclick = MostrarMenu;
+}
