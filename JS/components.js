@@ -121,7 +121,7 @@ export const CardCategory = (nombre,imagenUrl) => {
 </div></a>`
 }
 
-export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categoria,stock) => {
+export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categoria,stock,textButton) => {
   return `<div id="producto">
   <div class="producto-header">
     <h2>${nombre}</h2>
@@ -137,7 +137,7 @@ export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categori
       <h2>${precio}</h2>
   </div>
   <div id="botones">
-      <button id="comprarBTN" class="searchButton">Comprar Ahora</button>
+      <button id="favoritosBTN" class="searchButton">${textButton}</button>
       <button id="addBTN"  class="searchButton">Añadir al Carrito</button>
   </div>
   <div id="caracteristicas">

@@ -5,6 +5,7 @@ const contacto = $('#Contacto');
 const main = $('#main');
 let productoId=null;
 let shortMenu = false;
+let favoritosBTN;
 
 window.onload = () => {
     header.html(NavMenu());
@@ -19,21 +20,39 @@ const agregar = () => {
     postCarrito('./product.html?id='+productoId)
 }
 
-const comprar = () => {
-    alert("La compra se concretó exitosamente")
+const favoritos = () => {
+    AddOrRemoveFavoritos('favoritos',productoId);
+    if(!favoritosBTN){
+        favoritosBTN  = document.getElementById("favoritosBTN")
+    }
+    if(IsFavorito(productoId)){
+        favoritosBTN.textContent = 'Eliminar de favoritos';
+        
+    }
+    else{
+        favoritosBTN.textContent = 'Agregar a favoritos';
+    }
 }
 
 
 const CargarProductos = () => {
+    let text = ''
+    if(IsFavorito(productoId)){
+        text = 'Eliminar de favoritos';
+        
+    }
+    else{
+        text = 'Agregar a favoritos';
+    }
     let query =  `https://fakestoreapi.com/products/${productoId}`;
     main.html =null;
     fetch(query)
     .then(response => response.json())
     .then(e => {
-        main.append(CardProductoPrincipal(e.title,e.image,e.description,e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.category,15));
-        document.getElementById("comprarBTN").addEventListener("click", comprar);
+        main.append(CardProductoPrincipal(e.title,e.image,e.description,e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.category,15,text));
+        document.getElementById("favoritosBTN").addEventListener("click", favoritos);
         document.getElementById("addBTN").addEventListener("click", agregar);
-        });
+        });      
 }
 
 function getQueryParams() {
@@ -55,7 +74,7 @@ const postCarrito = (ruta) => {
     location.href=ruta;
 }
 
-function MostrarMenu(){
+const MostrarMenu = () => {
     if(shortMenu) {
         header.html(NavMenu());
         shortMenu = false;
@@ -66,4 +85,32 @@ function MostrarMenu(){
     }
     
     $('#menu-oculto').click(MostrarMenu);
+}
+
+const AddOrRemoveFavoritos = (nameItem,idProduct) => {
+        let favoritos = localStorage.getItem(nameItem);
+        if(favoritos){
+            let list = JSON.parse(favoritos);
+            if (list.includes(idProduct)) {
+                list.splice(list.indexOf(idProduct))
+                ReemplazarLocalStorage(nameItem,list)
+              } else {
+                list.unshift(idProduct);
+                ReemplazarLocalStorage(nameItem,list)
+              }
+        }
+        else{
+            localStorage.setItem(nameItem, JSON.stringify([idProduct]));
+        }
+}
+
+const ReemplazarLocalStorage = (nameItem,list) =>  {
+    localStorage.removeItem(nameItem);
+    localStorage.setItem(nameItem, JSON.stringify(list));
+}
+
+const IsFavorito = (idProduct) => {
+    let favoritos = localStorage.getItem('favoritos');
+    let list = JSON.parse(favoritos);
+    return list.includes(idProduct)          
 }
