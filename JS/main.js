@@ -1,18 +1,18 @@
 import {NavMenu,NavMenu2,Footer,CardVarios} from './components.js'
 
 
-const header = document.getElementById("Menu");
-const contacto = document.getElementById("Contacto");
-const subcontainer1 = document.getElementById("varios-subcontainer-body-1");
-const subcontainer2 = document.getElementById("varios-subcontainer-body-2");
-const subcontainer3 = document.getElementById("varios-subcontainer-body-3");
+const header = $('#Menu');
+const contacto = $('#Contacto');
+const subcontainer1 = $('#varios-subcontainer-body-1');
+const subcontainer2 = $('#varios-subcontainer-body-2');
+const subcontainer3 = $('#varios-subcontainer-body-3');
 let shortMenu = false;
 
 window.onload = () => {
-    header.innerHTML=NavMenu();
-    contacto.innerHTML=Footer();
+    header.html(NavMenu());
+    contacto.html(Footer());
     CargarVarios();
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
 
 function getRandomInt(min, max) {
@@ -23,15 +23,15 @@ function getRandomInt(min, max) {
 
 function MostrarMenu(){
     if(shortMenu) {
-        header.innerHTML=NavMenu();
+        header.html(NavMenu());
         shortMenu = false;
     }
     else{
-        header.innerHTML=NavMenu2();
+        header.html(NavMenu2());
         shortMenu = true;
     }
     
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
 
 const CargarVarios = () => {
@@ -43,9 +43,9 @@ const CargarVarios = () => {
         for (var i = 0; i < 4; i++) {
             var x = getRandomInt(0,max);
             var y = getRandomInt(0,max);
-            subcontainer1.innerHTML+=CardVarios(list[i].id,Recortar(list[i].title,28),list[i].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[i].image)
-            subcontainer2.innerHTML+=CardVarios(list[x].id,Recortar(list[x].title,28),list[x].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[x].image)
-            subcontainer3.innerHTML+=CardVarios(list[y].id,Recortar(list[y].title,28),list[y].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[y].image)
+            subcontainer1.append(CardVarios(list[i].id,Recortar(list[i].title,28),list[i].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[i].image))
+            subcontainer2.append(CardVarios(list[x].id,Recortar(list[x].title,28),list[x].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[x].image))
+            subcontainer3.append(CardVarios(list[y].id,Recortar(list[y].title,28),list[y].price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),list[y].image))
          }
     });
 }

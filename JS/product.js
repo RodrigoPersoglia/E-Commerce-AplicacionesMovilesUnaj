@@ -1,18 +1,18 @@
 import {NavMenu,NavMenu2,Footer,CardProductoPrincipal} from './components.js'
 
-const header = document.getElementById("Menu");
-const contacto = document.getElementById("Contacto");
-const main = document.getElementById("main");
+const header = $('#Menu');
+const contacto = $('#Contacto');
+const main = $('#main');
 let productoId=null;
 let shortMenu = false;
 
 window.onload = () => {
-    header.innerHTML=NavMenu();
-    contacto.innerHTML=Footer();
+    header.html(NavMenu());
+    contacto.html(Footer());
     const parametros = getQueryParams();
     if(parametros.id!=undefined){productoId=parametros.id;}
     CargarProductos();
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
 
 const agregar = () => {
@@ -26,11 +26,11 @@ const comprar = () => {
 
 const CargarProductos = () => {
     let query =  `https://fakestoreapi.com/products/${productoId}`;
-    main.innerHTML =null;
+    main.html =null;
     fetch(query)
     .then(response => response.json())
     .then(e => {
-        main.innerHTML=CardProductoPrincipal(e.title,e.image,e.description,e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.category,15);
+        main.append(CardProductoPrincipal(e.title,e.image,e.description,e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.category,15));
         document.getElementById("comprarBTN").addEventListener("click", comprar);
         document.getElementById("addBTN").addEventListener("click", agregar);
         });
@@ -57,13 +57,13 @@ const postCarrito = (ruta) => {
 
 function MostrarMenu(){
     if(shortMenu) {
-        header.innerHTML=NavMenu();
+        header.html(NavMenu());
         shortMenu = false;
     }
     else{
-        header.innerHTML=NavMenu2();
+        header.html(NavMenu2());
         shortMenu = true;
     }
     
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }

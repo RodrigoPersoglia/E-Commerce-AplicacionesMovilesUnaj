@@ -1,15 +1,15 @@
 import {NavMenu,NavMenu2,Footer,CardCarrito} from './components.js'
 
-const header = document.getElementById("Menu");
-const contacto = document.getElementById("Contacto");
-const carritoContainer = document.getElementById("carrito-card-container");
-const precioCarrito = document.getElementById("precio-total");
-const subtotalCarrito = document.getElementById("subtotal");
-const impuesto= document.getElementById("impuesto");
-const descuentoResumen= document.getElementById("descuento");
-const botonComprar= document.getElementById("boton-comprar");
-const carritovacio= document.getElementById("carrito-null");
-const carritoInfo= document.getElementById("carrito");
+const header = $('#Menu');
+const contacto = $('#Contacto');
+const carritoContainer = $('#carrito-card-container');
+const precioCarrito = $('#precio-total');
+const subtotalCarrito = $('#subtotal');
+const impuesto= $('#impuesto');
+const descuentoResumen= $('#descuento');
+const botonComprar= $('#boton-comprar');
+const carritovacio= $('#carrito-null');
+const carritoInfo= $('#carrito');
 var botones = document.querySelectorAll(".eliminarBoton");
 let shortMenu = false;
 
@@ -18,11 +18,11 @@ let imp=0;
 let descuento=0;
 
 window.onload = () => {
-    header.innerHTML=NavMenu();
-    contacto.innerHTML=Footer();
+    header.append(NavMenu());
+    contacto.append(Footer());
     CargarCarrito(); 
     botonComprar.onclick = EjecutarCompra;  
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
 
 const CargarCarrito = () => {
@@ -34,8 +34,8 @@ const CargarCarrito = () => {
                 RenderizarProductos(e.id,contador)
                 contador++;
             });
-            if(contador>0){carritovacio.style.display = 'none';}
-            else{carritoInfo.style.display = 'none';}
+            if(contador>0){carritovacio.hide();}
+            else{carritoInfo.hide();}
         }
         );
 }
@@ -60,10 +60,10 @@ const eliminarItem = function (evento) {
 }
 
 const ResumenCompra = (precio, impues,desc) =>{
-    precioCarrito.innerHTML=(`${Redondeo(precio)}`);
-    subtotalCarrito.innerHTML=(`${Redondeo(precio+impues-desc)}`);
-    impuesto.innerHTML=(`${Redondeo(impues)}`);
-    descuentoResumen.innerHTML = (`${Redondeo(desc)}`);
+    precioCarrito.html(`${Redondeo(precio)}`);
+    subtotalCarrito.html(`${Redondeo(precio+impues-desc)}`);
+    impuesto.html(`${Redondeo(impues)}`);
+    descuentoResumen.html(`${Redondeo(desc)}`);
 }
 
 const Redondeo = (numero) =>{
@@ -79,7 +79,7 @@ const RenderizarProductos = (id,incremental) => {
     .then(e => { 
         let bonificacion = 0;
         if(e.enOferta){bonificacion=15}
-        carritoContainer.innerHTML+=CardCarrito(e.id,e.image,Redondeo(e.price),e.title,bonificacion,e.category,e.description)
+        carritoContainer.append(CardCarrito(e.id,e.image,Redondeo(e.price),e.title,bonificacion,e.category,e.description));
         subtotal+= e.price;
         descuento = 0;
         imp=subtotal*0.21
@@ -97,13 +97,12 @@ const EjecutarCompra = () => {
 
 function MostrarMenu(){
     if(shortMenu) {
-        header.innerHTML=NavMenu();
+        header.html(NavMenu());
         shortMenu = false;
     }
     else{
-        header.innerHTML=NavMenu2();
+        header.html(NavMenu2());
         shortMenu = true;
-    }
-    
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    }  
+    $('#menu-oculto').click(MostrarMenu);
 }

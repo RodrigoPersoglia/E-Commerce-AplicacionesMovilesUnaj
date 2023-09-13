@@ -4,22 +4,22 @@ let minPrice = null;
 let maxPrice = null;
 let product = '';
 let category = '';
-const header = document.getElementById("Menu");
-const contacto = document.getElementById("Contacto");
-const categorias = document.getElementById("categorias-populares-container");
-const ProductosFiltrados = document.getElementById("productos-filtrados");
-const searchButton = document.getElementById("searchButton");
+const header = $('#Menu');
+const contacto = $('#Contacto');
+const categorias = $('#categorias-populares-container');
+const ProductosFiltrados = $('#productos-filtrados');
+const searchButton = $('#searchButton');
+const selectCategorias = $('#selectCategoria');
+const input = $('#filtro-input');
+const limpiarFiltros = $('#right-header');
 
-const selectCategorias = document.getElementById("selectCategoria");
-const input = document.getElementById("filtro-input");
 const precioMinimo = document.getElementById("minPrice");
 const precioMaximo = document.getElementById("maxPrice");
-const limpiarFiltros = document.getElementById("right-header");
 let shortMenu = false;
 
 window.onload = () => {
-    header.innerHTML=NavMenu();
-    contacto.innerHTML=Footer();
+    header.html(NavMenu());
+    contacto.html(Footer());
     cargarCategoriasPopulares();
     cargarCategorias();
     searchButton.onclick = Search;
@@ -28,7 +28,7 @@ window.onload = () => {
     if(parametros.category!=undefined){category+=parametros.category;}
     CargarProductos();
     limpiarFiltros.onclick = Limpiar;
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
 
 const Limpiar = () => {
@@ -79,7 +79,7 @@ const CargarProductos = () => {
     data.forEach(e => {
         if(isLike(e.title,searchProduct)){
             let bonificacion = 0;
-            ProductosFiltrados.innerHTML +=Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image);
+            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
         }
         });
     });
@@ -103,7 +103,7 @@ const Search = () => {
     let searchProduct = `%${input.value}%`;
     let searchCategory = selectCategorias.selectedOptions[0].textContent;
     let query = 'https://fakestoreapi.com/products';
-    ProductosFiltrados.innerHTML =null;
+    ProductosFiltrados.html(null);
     fetch(query)
     .then(response => response.json())
     .then(data => {
@@ -111,7 +111,7 @@ const Search = () => {
         if(isLike(e.title,searchProduct) && (searchCategory == 'Categoria' || e.category == searchCategory)
         && (minPrice == null|| e.price >= minPrice) && (maxPrice == null|| e.price <= maxPrice)){
             let bonificacion = 0;
-            ProductosFiltrados.innerHTML +=Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image);
+            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
         }
         });
     });
@@ -127,7 +127,7 @@ const cargarCategoriasPopulares = () => {
     .then(response => response.json())
     .then(data => {
         for (var i = 0; i < 4; i++) {
-            categorias.innerHTML+=CardCategory(data[i],list[i]);
+            categorias.append(CardCategory(data[i],list[i]));
         }
     });
 }
@@ -155,13 +155,13 @@ const isLike = (string, pattern) => {
 
   function MostrarMenu(){
     if(shortMenu) {
-        header.innerHTML=NavMenu();
+        header.html(NavMenu());
         shortMenu = false;
     }
     else{
-        header.innerHTML=NavMenu2();
+        header.html(NavMenu2());
         shortMenu = true;
     }
     
-    document.getElementById("menu-oculto").onclick = MostrarMenu;
+    $('#menu-oculto').click(MostrarMenu);
 }
