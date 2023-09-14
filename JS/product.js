@@ -92,7 +92,7 @@ const AddOrRemoveFavoritos = (nameItem,idProduct) => {
         if(favoritos){
             let list = JSON.parse(favoritos);
             if (list.includes(idProduct)) {
-                list.splice(list.indexOf(idProduct))
+                list.splice(list.indexOf(idProduct),1)
                 ReemplazarLocalStorage(nameItem,list)
               } else {
                 list.unshift(idProduct);

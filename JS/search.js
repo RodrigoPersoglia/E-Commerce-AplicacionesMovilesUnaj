@@ -12,6 +12,7 @@ const searchButton = $('#searchButton');
 const selectCategorias = $('#selectCategoria');
 const input = $('#filtro-input');
 const limpiarFiltros = $('#right-header');
+const favoritos = $('#favoritos-container');
 
 const precioMinimo = document.getElementById("minPrice");
 const precioMaximo = document.getElementById("maxPrice");
@@ -27,7 +28,8 @@ window.onload = () => {
     if(parametros.product!=undefined){product+=parametros.product;}
     if(parametros.category!=undefined){category+=parametros.category;}
     CargarProductos();
-    limpiarFiltros.onclick = Limpiar;
+    limpiarFiltros.click(Limpiar);
+    favoritos.click(CargarFavoritos);
     $('#menu-oculto').click(MostrarMenu);
 }
 
@@ -83,6 +85,31 @@ const CargarProductos = () => {
         }
         });
     });
+}
+
+const CargarFavoritos = () => {
+    let list = getFavoritos();
+    let query = 'https://fakestoreapi.com/products';
+    ProductosFiltrados.html(null);
+    fetch(query)
+    .then(response => response.json())
+    .then(data => {
+    data.forEach(e => {
+        if(list.includes(String(e.id))){
+            let bonificacion = 0;
+            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+        }
+        });
+    });
+}
+
+const getFavoritos = () => {
+    let favoritos = localStorage.getItem('favoritos');
+    if(favoritos){
+        let list = JSON.parse(favoritos);
+        return list;
+    }
+    return null;
 }
 
 function getQueryParams() {

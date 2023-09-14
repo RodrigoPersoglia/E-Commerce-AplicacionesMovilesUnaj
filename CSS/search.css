@@ -2,11 +2,11 @@
 /*-------------------------- main ----------------------*/
 
 
-#categorias-populares{
+#categorias-populares, #favoritos-container{
     color: #262626 
 }
 
-#categorias-populares h2{
+#categorias-populares h2, #favoritos-container h2{
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
@@ -18,12 +18,20 @@
     max-width: 100%;
     display: flex;
     justify-content: space-evenly;
-    
+    margin-bottom: 20px;  
 }
 
 .rango{
     display: flex;
     gap: 10px;
+}
+#favoritos-container{
+    display: inline-flex;
+}
+
+#favoritos-container :hover{
+    color: blue;
+    cursor:pointer;
 }
 
 #categorias-populares-container a{
