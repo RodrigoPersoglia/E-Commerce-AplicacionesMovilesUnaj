@@ -73,7 +73,7 @@ export const Footer = () => {
 
     <p>© 2023, Unaj E-Commerce, Inc. Todos los derechos reservados. Unaj, Unaj E-Commerce, 
       el logotipo de Unaj E-Commerce son marcas comerciales o marcas registradas de Unaj 
-      Games, Inc. tanto en Estados Unidos de América como en el resto del mundo. Otras marcas o nombres 
+      , Inc. tanto en Estados Unidos de América como en el resto del mundo. Otras marcas o nombres 
       de productos son marcas comerciales de sus respectivos propietarios. Las transacciones fuera de 
       EE. UU. se realizan a través de Unaj International</p>
 

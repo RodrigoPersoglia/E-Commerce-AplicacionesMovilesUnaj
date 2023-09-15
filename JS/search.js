@@ -1,4 +1,4 @@
-import {NavMenu,NavMenu2,Footer,CardCategory,Card} from './components.js'
+import { NavMenu, NavMenu2, Footer, CardCategory, Card } from './components.js'
 
 const itemsPorPagina = 6;
 let paginaActual = 1;
@@ -31,48 +31,47 @@ window.onload = () => {
     contacto.html(Footer());
     cargarCategoriasPopulares();
     cargarCategorias();
-    searchButton.onclick = Search;
+    searchButton.click(Search);
     const parametros = getQueryParams();
-    if(parametros.product!=undefined){product+=parametros.product;}
-    if(parametros.category!=undefined){category+=parametros.category;}
+    if (parametros.product != undefined) { product += parametros.product; }
+    if (parametros.category != undefined) { category += parametros.category; }
     CargarProductos();
     limpiarFiltros.click(Limpiar);
     favoritos.click(CargarFavoritos);
     $('#menu-oculto').click(MostrarMenu);
-    mostrarElementos();
     actualizarBotones();
 }
 
 const Limpiar = () => {
-    selectCategorias.value  = null;
+    selectCategorias.val('Todas');
     precioMinimo.value = null;
     precioMaximo.value = null;
-    input.value = null;
+    input.val('');
 }
 
-precioMinimo.addEventListener('change',precios)
-precioMaximo.addEventListener('change',precios)
+precioMinimo.addEventListener('change', precios)
+precioMaximo.addEventListener('change', precios)
 
 
-function precios(){
+function precios() {
     minPrice = null;
     maxPrice = null;
-    if(precioMaximo.value!='' & precioMaximo.value!=''){
-        if((precioMaximo.value-precioMinimo.value)>-1){
+    if (precioMaximo.value != '' & precioMaximo.value != '') {
+        if ((precioMaximo.value - precioMinimo.value) > -1) {
             minPrice = precioMinimo.value;
             maxPrice = precioMaximo.value;
         }
-        else{alert('El precio máximo no puede ser inferior al precio mínimo')}
+        else { alert('El precio máximo no puede ser inferior al precio mínimo') }
     }
-    else{
-        if(precioMinimo.value!=''){minPrice = precioMinimo.value;}
-        else{maxPrice = precioMaximo.value;}
+    else {
+        if (precioMinimo.value != '') { minPrice = precioMinimo.value; }
+        else { maxPrice = precioMaximo.value; }
     }
 }
 
 const Recortar = (palabra) => {
-    if(palabra.length>20){
-        return palabra.substring(0,17)+'...';
+    if (palabra.length > 20) {
+        return palabra.substring(0, 17) + '...';
     }
     return palabra
 }
@@ -81,43 +80,48 @@ const CargarProductos = () => {
     listElements = [];
     let query;
     let searchProduct = `%${product}%`;
-    if(category != ''){
+    if (category != '') {
         query = `https://fakestoreapi.com/products/category/${category}`;
     }
-    else{
+    else {
         query = 'https://fakestoreapi.com/products';
     }
-    ProductosFiltrados.innerHTML =null;
+    ProductosFiltrados.innerHTML = null;
     fetch(query).then(response => response.json()).then(data => {
-    data.forEach(e => {
-        if(isLike(e.title,searchProduct)){
-            listElements.push(e)
-        }
+        data.forEach(e => {
+            if (isLike(e.title, searchProduct)) {
+                listElements.push(e)
+            }
         });
-        mostrarElementos();
+        mostrarElementos(0);
+        window.scrollTo(1000, 0);
     });
 }
 
 const CargarFavoritos = () => {
+
     listElements = [];
     let list = getFavoritos();
     let query = 'https://fakestoreapi.com/products';
     ProductosFiltrados.html(null);
     fetch(query)
-    .then(response => response.json())
-    .then(data => {
-    data.forEach(e => {
-        if(list.includes(String(e.id))){
-            listElements.push(e)
-        }
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(e => {
+                if (list.includes(String(e.id))) {
+                    listElements.push(e)
+                }
+            });
+            paginaActual = 1;
+            mostrarElementos(favoritos.offset().top);
+            pagIni.text(paginaActual)
+            actualizarBotones()
         });
-        mostrarElementos();
-    });
 }
 
 const getFavoritos = () => {
     let favoritos = localStorage.getItem('favoritos');
-    if(favoritos){
+    if (favoritos) {
         let list = JSON.parse(favoritos);
         return list;
     }
@@ -127,34 +131,37 @@ const getFavoritos = () => {
 function getQueryParams() {
     var urlParams;
     var match,
-        pl     = /\+/g,
+        pl = /\+/g,
         search = /([^&=]+)=?([^&]*)/g,
         decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        query  = window.location.search.substring(1);
-  
+        query = window.location.search.substring(1);
+
     urlParams = {};
     while (match = search.exec(query))
-       urlParams[decode(match[1])] = decode(match[2]);
-       return urlParams;
+        urlParams[decode(match[1])] = decode(match[2]);
+    return urlParams;
 };
 
 const Search = () => {
     listElements = [];
-    let searchProduct = `%${input.value}%`;
-    let searchCategory = selectCategorias.selectedOptions[0].textContent;
+    let searchProduct = `%${input.val()}%`;
+    let searchCategory = selectCategorias.val();
     let query = 'https://fakestoreapi.com/products';
     ProductosFiltrados.html(null);
     fetch(query)
-    .then(response => response.json())
-    .then(data => {
-    data.forEach(e => {
-        if(isLike(e.title,searchProduct) && (searchCategory == 'Categoria' || e.category == searchCategory)
-        && (minPrice == null|| e.price >= minPrice) && (maxPrice == null|| e.price <= maxPrice)){
-            listElements.push(e)
-        }
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(e => {
+                if (isLike(e.title, searchProduct) && (searchCategory == 'Todas' || e.category == searchCategory)
+                    && (minPrice == null || e.price >= minPrice) && (maxPrice == null || e.price <= maxPrice)) {
+                    listElements.push(e)
+                }
+            });
+            paginaActual = 1;
+            mostrarElementos(favoritos.offset().top);
+            pagIni.text(paginaActual)
+            actualizarBotones();
         });
-        mostrarElementos();
-    });
 }
 
 const cargarCategoriasPopulares = () => {
@@ -164,26 +171,27 @@ const cargarCategoriasPopulares = () => {
     list.push('https://tse4.mm.bing.net/th?id=OIP.k-pDYOyHL7Ls-dPjt2g54AHaHa&pid=Api&P=0&h=180')
     var url = 'https://fakestoreapi.com/products/categories';
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        for (var i = 0; i < 4; i++) {
-            categorias.append(CardCategory(data[i],list[i]));
-        }
-    });
+        .then(response => response.json())
+        .then(data => {
+            for (var i = 0; i < 4; i++) {
+                categorias.append(CardCategory(data[i], list[i]));
+            }
+        });
 }
 
 const cargarCategorias = () => {
     var url = 'https://fakestoreapi.com/products/categories';
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-    data.forEach(e => {
-        var option = document.createElement("option");
-        option.text = e;
-        option.value = e.categoriaId;
-        selectCategorias.add(option);
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(e => {
+                var option = $('<option>', {
+                    value: e.categoriaId,
+                    text: e
+                })
+                selectCategorias.append(option)
+            });
         });
-    });
 }
 
 const isLike = (string, pattern) => {
@@ -191,23 +199,23 @@ const isLike = (string, pattern) => {
     const regexPattern = escapedPattern.replace(/%/g, '.*').replace(/_/g, '.');
     const regex = new RegExp('^' + regexPattern + '$');
     return regex.test(string.toLowerCase());
-  }
+}
 
-  function MostrarMenu(){
-    if(shortMenu) {
+function MostrarMenu() {
+    if (shortMenu) {
         header.html(NavMenu());
         shortMenu = false;
     }
-    else{
+    else {
         header.html(NavMenu2());
         shortMenu = true;
     }
-    
+
     $('#menu-oculto').click(MostrarMenu);
 }
 
-function mostrarElementos() {
-    var cantPag = Math.ceil(listElements.length/itemsPorPagina);
+function mostrarElementos(posicion) {
+    var cantPag = Math.ceil(listElements.length / itemsPorPagina);
     pagFin.text(cantPag)
     const inicio = (paginaActual - 1) * itemsPorPagina;
     const fin = inicio + itemsPorPagina;
@@ -216,12 +224,14 @@ function mostrarElementos() {
     ProductosFiltrados.html(null);
 
     for (const e of elementosPagina) {
-        ProductosFiltrados.append(Card(e.id,Recortar(e.title),0+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+        ProductosFiltrados.append(Card(e.id, Recortar(e.title), 0 + '%', e.price.toLocaleString('fr-FR', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }), e.image));
     }
-    var posicionElemento = favoritos.offset().top;
+    Posicionar(posicion)
+}
 
+function Posicionar(posicion){
     $('html, body').animate({
-    scrollTop: posicionElemento
+        scrollTop: posicion
     }, 500);
 }
 
@@ -233,7 +243,7 @@ function actualizarBotones() {
 anterior.addEventListener('click', () => {
     if (paginaActual > 1) {
         paginaActual--;
-        mostrarElementos();
+        mostrarElementos(favoritos.offset().top);
         actualizarBotones();
         pagIni.text(paginaActual)
     }
@@ -242,7 +252,7 @@ anterior.addEventListener('click', () => {
 siguiente.addEventListener('click', () => {
     if (paginaActual < Math.ceil(listElements.length / itemsPorPagina)) {
         paginaActual++;
-        mostrarElementos();
+        mostrarElementos(favoritos.offset().top);
         actualizarBotones();
         pagIni.text(paginaActual)
     }
