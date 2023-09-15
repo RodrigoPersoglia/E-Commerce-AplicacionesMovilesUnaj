@@ -1,5 +1,5 @@
 export const NavMenu = () => {
-    return `<div id="top-header">
+  return `<div id="top-header">
         <div id="logo">
             <img src="../Imagenes/logo.png" alt="logo">
             <h1>Unaj E-Commerce</h1>
@@ -35,7 +35,7 @@ export const NavMenu2 = () => {
 }
 
 export const Footer = () => {
-    return `<div id="redes-logos">
+  return `<div id="redes-logos">
       <a Target="_blank" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
       <a Target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
       <a Target="_blank" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
@@ -84,7 +84,7 @@ export const Footer = () => {
       </div>`
 }
 
-export const Card = (id,nombre,descuento,precio,imagenUrl) => {
+export const Card = (id, nombre, descuento, precio, imagenUrl) => {
   return `
     <div class="producto-info-1" onclick="location.href='./product.html?id=${id}'">
       <img src="${imagenUrl}" alt="">
@@ -100,7 +100,7 @@ export const Card = (id,nombre,descuento,precio,imagenUrl) => {
 }
 
 
-export const CardVarios = (id,nombre,precio,imagenUrl) => {
+export const CardVarios = (id, nombre, precio, imagenUrl) => {
   return `<div class="varios-" onclick="location.href='./product.html?id=${id}'">
   <img src="${imagenUrl}" alt="">
   <div class="varios--info">
@@ -112,7 +112,7 @@ export const CardVarios = (id,nombre,precio,imagenUrl) => {
 </div>`
 }
 
-export const CardCategory = (nombre,imagenUrl) => {
+export const CardCategory = (nombre, imagenUrl) => {
   return `<a href="./search.html?category=${nombre}"><div class="categorias-populares-subcontainer">
   <div class="categorias-populares-subcontainer-imagenes">
       <img src="${imagenUrl}" alt="producto">
@@ -121,7 +121,7 @@ export const CardCategory = (nombre,imagenUrl) => {
 </div></a>`
 }
 
-export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categoria,stock,textButton) => {
+export const CardProductoPrincipal = (nombre, portada, descripcion, precio, categoria, stock, textButton) => {
   return `<div id="producto">
   <div class="producto-header">
     <h2>${nombre}</h2>
@@ -153,7 +153,7 @@ export const CardProductoPrincipal = (nombre,portada,descripcion,precio,categori
 </div>`
 }
 
-export const CardCarrito = (id,portada,precio,nombre,desc,categoria,descripcion) => {
+export const CardCarrito = (id, portada, precio, nombre, desc, categoria, descripcion) => {
   return `
       <div class="carrito-card">
         <div class="carrito-card-imagen">

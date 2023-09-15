@@ -94,7 +94,6 @@ const CargarProductos = () => {
             }
         });
         mostrarElementos(0);
-        window.scrollTo(1000, 0);
     });
 }
 
@@ -229,7 +228,7 @@ function mostrarElementos(posicion) {
     Posicionar(posicion)
 }
 
-function Posicionar(posicion){
+function Posicionar(posicion) {
     $('html, body').animate({
         scrollTop: posicion
     }, 500);
@@ -257,12 +256,3 @@ siguiente.addEventListener('click', () => {
         pagIni.text(paginaActual)
     }
 });
-
-
-
-
-
-
-
-
-
