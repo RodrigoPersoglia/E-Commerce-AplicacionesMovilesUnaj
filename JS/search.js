@@ -1,5 +1,11 @@
 import {NavMenu,NavMenu2,Footer,CardCategory,Card} from './components.js'
 
+const itemsPorPagina = 6;
+let paginaActual = 1;
+const anterior = document.getElementById('anterior');
+const siguiente = document.getElementById('siguiente');
+let listElements = [];
+
 let minPrice = null;
 let maxPrice = null;
 let product = '';
@@ -68,6 +74,7 @@ const Recortar = (palabra) => {
 }
 
 const CargarProductos = () => {
+    listElements = [];
     let query;
     let searchProduct = `%${product}%`;
     if(category != ''){
@@ -80,14 +87,15 @@ const CargarProductos = () => {
     fetch(query).then(response => response.json()).then(data => {
     data.forEach(e => {
         if(isLike(e.title,searchProduct)){
-            let bonificacion = 0;
-            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+            listElements.push(e)
         }
         });
+        mostrarElementos();
     });
 }
 
 const CargarFavoritos = () => {
+    listElements = [];
     let list = getFavoritos();
     let query = 'https://fakestoreapi.com/products';
     ProductosFiltrados.html(null);
@@ -96,10 +104,10 @@ const CargarFavoritos = () => {
     .then(data => {
     data.forEach(e => {
         if(list.includes(String(e.id))){
-            let bonificacion = 0;
-            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+            listElements.push(e)
         }
         });
+        mostrarElementos();
     });
 }
 
@@ -127,6 +135,7 @@ function getQueryParams() {
 };
 
 const Search = () => {
+    listElements = [];
     let searchProduct = `%${input.value}%`;
     let searchCategory = selectCategorias.selectedOptions[0].textContent;
     let query = 'https://fakestoreapi.com/products';
@@ -137,10 +146,10 @@ const Search = () => {
     data.forEach(e => {
         if(isLike(e.title,searchProduct) && (searchCategory == 'Categoria' || e.category == searchCategory)
         && (minPrice == null|| e.price >= minPrice) && (maxPrice == null|| e.price <= maxPrice)){
-            let bonificacion = 0;
-            ProductosFiltrados.append(Card(e.id,Recortar(e.title),bonificacion+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+            listElements.push(e)
         }
         });
+        mostrarElementos();
     });
 }
 
@@ -192,3 +201,45 @@ const isLike = (string, pattern) => {
     
     $('#menu-oculto').click(MostrarMenu);
 }
+
+function mostrarElementos() {
+    console.log(listElements)
+    const inicio = (paginaActual - 1) * itemsPorPagina;
+    const fin = inicio + itemsPorPagina;
+    const elementosPagina = listElements.slice(inicio, fin);
+
+    ProductosFiltrados.html(null);
+
+    for (const e of elementosPagina) {
+        ProductosFiltrados.append(Card(e.id,Recortar(e.title),0+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
+    }
+}
+
+function actualizarBotones() {
+    anterior.disabled = paginaActual === 1;
+    siguiente.disabled = paginaActual === Math.ceil(listElements.length / itemsPorPagina);
+}
+
+anterior.addEventListener('click', () => {
+    if (paginaActual > 1) {
+        paginaActual--;
+        mostrarElementos();
+        actualizarBotones();
+    }
+});
+
+siguiente.addEventListener('click', () => {
+    if (paginaActual < Math.ceil(listElements.length / itemsPorPagina)) {
+        paginaActual++;
+        mostrarElementos();
+        actualizarBotones();
+    }
+});
+
+
+
+
+
+
+
+
