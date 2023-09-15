@@ -19,6 +19,8 @@ const selectCategorias = $('#selectCategoria');
 const input = $('#filtro-input');
 const limpiarFiltros = $('#right-header');
 const favoritos = $('#favoritos-container');
+const pagIni = $('#pag-ini');
+const pagFin = $('#pag-fin');
 
 const precioMinimo = document.getElementById("minPrice");
 const precioMaximo = document.getElementById("maxPrice");
@@ -37,6 +39,8 @@ window.onload = () => {
     limpiarFiltros.click(Limpiar);
     favoritos.click(CargarFavoritos);
     $('#menu-oculto').click(MostrarMenu);
+    mostrarElementos();
+    actualizarBotones();
 }
 
 const Limpiar = () => {
@@ -203,7 +207,8 @@ const isLike = (string, pattern) => {
 }
 
 function mostrarElementos() {
-    console.log(listElements)
+    var cantPag = Math.ceil(listElements.length/itemsPorPagina);
+    pagFin.text(cantPag)
     const inicio = (paginaActual - 1) * itemsPorPagina;
     const fin = inicio + itemsPorPagina;
     const elementosPagina = listElements.slice(inicio, fin);
@@ -213,6 +218,11 @@ function mostrarElementos() {
     for (const e of elementosPagina) {
         ProductosFiltrados.append(Card(e.id,Recortar(e.title),0+'%',e.price.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}),e.image));
     }
+    var posicionElemento = favoritos.offset().top;
+
+    $('html, body').animate({
+    scrollTop: posicionElemento
+    }, 500);
 }
 
 function actualizarBotones() {
@@ -225,6 +235,7 @@ anterior.addEventListener('click', () => {
         paginaActual--;
         mostrarElementos();
         actualizarBotones();
+        pagIni.text(paginaActual)
     }
 });
 
@@ -233,8 +244,10 @@ siguiente.addEventListener('click', () => {
         paginaActual++;
         mostrarElementos();
         actualizarBotones();
+        pagIni.text(paginaActual)
     }
 });
+
 
 
 

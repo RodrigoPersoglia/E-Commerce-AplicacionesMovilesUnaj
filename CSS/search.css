@@ -154,19 +154,38 @@
 #paginacion{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     height: 30px;
 }
 
 #paginacion button{
     width: 80px;
     border-radius: 10px;
+    border: 1px solid #262626;
+    color: #262626;
+}
+
+#paginacion button:hover{
+    cursor: pointer;
     border: 1px solid blue;
     color: blue;
 }
 
-#paginacion button:hover{
-    background-color:white;
+.box-pag{
+    border-radius: 10px;
+    border: 1px solid #262626;
+    color: #262626;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.box-pag2{
+    color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 .producto-info-1{
