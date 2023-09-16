@@ -108,15 +108,12 @@
     font-size: 1.1rem;
 }
 
-#left-header {
-    width: 75%;
-}
 
 #right-header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    width: 25%;
-    padding: 0% 0% 0% 3%;
+    padding: 15px;
 }
 
 #right-header a {
@@ -253,12 +250,11 @@
 
 /* ----filtros----*/
 #filtros-container {
-    margin: 3% 0% 0% 0%;
     width: 25%;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10%;
 }
 
 #filtro-input {
@@ -267,7 +263,7 @@
     border-radius: 3px;
     padding: 4% 0% 4% 2%;
     color: #262626;
-    height: 35px;
+    height: 100%;
     width: 87%;
 
 }
@@ -344,7 +340,6 @@
 #barra-filtro {
     color: #262626;
     background-color: #F2F2F2;
-    padding: 0% 0% 0% 5%;
     border-radius: 4px;
     display: flex;
 }
@@ -359,7 +354,7 @@
     text-align: left;
     padding: 3%;
     color: #262626;
-    padding: 8% 0% 8% 5%;
+    padding: 5px;
     font-weight: bold;
 }
 
@@ -415,7 +410,6 @@
 
 @media (max-width: 865px) {
     #categorias-populares-container a {
-
         border-radius: 50%;
     }
 
@@ -456,15 +450,15 @@
         flex-direction: row;
         min-width: 100%;
         max-width: 100%;
-        height: 50px;
-        gap: 20px;
+        /* height: 50px; */
+        gap: 10px;
     }
 
     #filtros-container {
         min-width: 100%;
         max-width: 100%;
-        height: 80px;
-
+        height: 80px; 
+        margin-bottom: 20px;
     }
 
     #rangoLabel {
@@ -502,5 +496,29 @@
 
         width: 100%;
         height: auto;
+    }
+    #filtros {
+        flex-direction: column;
+        width: 75%;
+        gap: 10px;
+        height: 35px;
+    }
+    #filtros-container {
+        height: 200px;
+    }
+
+    .precios input{
+        height: 25px;
+    }
+    #filtro-input{
+        height: 35px;
+    }
+    #minPrice, #maxPrice, #filtro-input{
+        padding: 5px;
+    }
+    
+    #selectCategoria{
+        height: 25px;
+        padding: 5px;
     }
 }

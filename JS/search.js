@@ -21,6 +21,9 @@ const limpiarFiltros = $('#right-header');
 const favoritos = $('#favoritos-container');
 const pagIni = $('#pag-ini');
 const pagFin = $('#pag-fin');
+const filtrosShow= $('#filtros-show');
+const filtros = $('#filtros');
+const filtrosLimpiar = $('#filtros-limpiar');
 
 const precioMinimo = document.getElementById("minPrice");
 const precioMaximo = document.getElementById("maxPrice");
@@ -38,6 +41,7 @@ window.onload = () => {
     CargarProductos();
     limpiarFiltros.click(Limpiar);
     favoritos.click(CargarFavoritos);
+    filtrosShow.click(OcultarFiltros);
     $('#menu-oculto').click(MostrarMenu);
     actualizarBotones();
 }
@@ -256,3 +260,18 @@ siguiente.addEventListener('click', () => {
         pagIni.text(paginaActual)
     }
 });
+
+let filtrosVisibles = true;
+function OcultarFiltros(){
+    if(filtrosVisibles){      
+        filtros.hide();
+        filtrosLimpiar.hide();
+        filtrosVisibles = false;
+    }
+    else{
+        filtros.show();
+        filtrosLimpiar.show();        
+        filtrosVisibles = true;
+    }
+
+}
