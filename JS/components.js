@@ -68,7 +68,10 @@ export const Footer = () => {
         <a href="">Gerónimo Bazan</a>
       </div>
     </div>
-
+    <div class="map-conteiner">
+     <h2>Visitanos</h2>
+      <div id="mi_mapa" style="width: 250px; height: 250px;"></div>
+    </div>
     <hr>
 
     <p>© 2023, Unaj E-Commerce, Inc. Todos los derechos reservados. Unaj, Unaj E-Commerce, 
@@ -81,7 +84,17 @@ export const Footer = () => {
         <a href="">Terminos de servicios</a>
         <a href="">Politica de privacidad</a>
         <a href="">Política de reembolso de la tienda</a>
-      </div>`
+      </div>
+      
+      <script>
+        let map = L.map('mi_mapa').setView([-34.77512, -58.26872], 14)
+  
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+  
+        L.marker([-34.77512, -58.26872]).addTo(map).bindPopup("Universidad Nacional Arturo Jauretche")
+    </script>`
 }
 
 export const Card = (id, nombre, descuento, precio, imagenUrl) => {
