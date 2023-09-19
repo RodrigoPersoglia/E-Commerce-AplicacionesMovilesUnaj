@@ -2,6 +2,7 @@ import { NavMenu, NavMenu2, Footer, CardCategory, Card } from './components.js'
 
 const itemsPorPagina = 6;
 let paginaActual = 1;
+let filtrosVisibles = true;
 const anterior = document.getElementById('anterior');
 const siguiente = document.getElementById('siguiente');
 let listElements = [];
@@ -227,7 +228,7 @@ function mostrarElementos(posicion) {
     ProductosFiltrados.html(null);
 
     for (const e of elementosPagina) {
-        ProductosFiltrados.append(Card(e.id, Recortar(e.title), 0 + '%', e.price.toLocaleString('fr-FR', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }), e.image));
+        ProductosFiltrados.append(Card(e.id, Recortar(e.title), e.price.toLocaleString('fr-FR', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }), e.image));
     }
     Posicionar(posicion)
 }
@@ -261,7 +262,7 @@ siguiente.addEventListener('click', () => {
     }
 });
 
-let filtrosVisibles = true;
+
 function OcultarFiltros(){
     if(filtrosVisibles){      
         filtros.hide();

@@ -97,14 +97,13 @@ export const Footer = () => {
     </script>`
 }
 
-export const Card = (id, nombre, descuento, precio, imagenUrl) => {
+export const Card = (id, nombre, precio, imagenUrl) => {
   return `
     <div class="producto-info-1" onclick="location.href='./product.html?id=${id}'">
       <img src="${imagenUrl}" alt="">
       <div class="producto-info-1-text">
         <h2 id="ofertas-producto-titulo">${nombre}</h2>
         <div class="producto-info-1-precio">
-          <h3 class="descuento">${descuento}</h3>
           <h3 id="ofertas-producto-precio">${precio}</h3>
         </div>
       </div>

@@ -234,18 +234,17 @@
 
 .producto-info-1 h3 {
     font-size: 0.8rem;
+    border-radius: 5px;
+    background-color: #737373;
+    color: white;
+    padding: 3px;
 }
 
 .producto-info-1-precio {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
 
-.descuento {
-    background-color: rgba(0, 116, 228, 255);
-    border-radius: 5px;
-    padding: 2% 5% 2% 5%;
 }
 
 /* ----filtros----*/
@@ -451,14 +450,13 @@
         flex-direction: row;
         min-width: 100%;
         max-width: 100%;
-        /* height: 50px; */
+        height: 30px;
         gap: 10px;
     }
 
     #filtros-container {
         min-width: 100%;
         max-width: 100%;
-        height: 80px; 
         margin-bottom: 20px;
     }
 
@@ -488,6 +486,22 @@
     .dropdown {
         align-items: center;
         justify-content: center;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .precios input{
+        height: 25px;
+    }
+    #barra-filtro{
+        height: 35px;
+    }
+    #minPrice, #maxPrice, #filtro-input{
+        padding: 5px;
+    }
+    #selectCategoria{
+        height: 25px;
+        padding: 5px;
     }
 
 }
@@ -502,24 +516,7 @@
         flex-direction: column;
         width: 75%;
         gap: 10px;
-        height: 35px;
-    }
-    #filtros-container {
-        height: 200px;
+        height: 150px;
     }
 
-    .precios input{
-        height: 25px;
-    }
-    #filtro-input{
-        height: 35px;
-    }
-    #minPrice, #maxPrice, #filtro-input{
-        padding: 5px;
-    }
-    
-    #selectCategoria{
-        height: 25px;
-        padding: 5px;
-    }
 }
