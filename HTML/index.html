@@ -1,64 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/general.css">
-    <link rel="stylesheet" href="../CSS/main.css">
-    <script src="https://kit.fontawesome.com/120cdd133c.js" crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <script type="module" src="../JS/main.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../CSS/general.css">
+  <link rel="stylesheet" href="../CSS/main.css">
+  <script src="https://kit.fontawesome.com/120cdd133c.js" crossorigin="anonymous"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script type="module" src="../JS/main.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-    <title>Unaj E-Commerce</title>
-    <link rel="icon" href="../Imagenes/logo.png">
+  <title>Unaj E-Commerce</title>
+  <link rel="icon" href="../Imagenes/logo.png">
 </head>
+
 <body>
-    <header id="Menu">
-    </header>
+  <header id="Menu">
+  </header>
 
-    <main>
-      <section id="portada">
-        <img src="../Imagenes/Portada.jpeg" alt="Portada">
-      </section>
+  <main>
+    <section id="portada">
+      <img src="../Imagenes/Portada.jpeg" alt="Portada">
+    </section>
+   
+    <section id="historial">
+      <div id="container-historial">
+        <div class="historial-header">
+          <h2>Busquedas recientes</h2>
+        </div>
+        <div id="historial-body">
+        </div>
+      </div>
+    </section>
 
-        <section id="varios">
-          <div id="varios-container">
-            <div class="varios-subcontainer" id="subConteiner1">
-              
-              <div class="varios-subcontainer-header">
-                <h2>Ultimos Lanzamientos</h2>
-              </div>
-              <div id="varios-subcontainer-body-1">
-              </div>
-            </div>
+    <section id="varios">
+      <div id="varios-container">
+        <div class="varios-subcontainer" id="subConteiner1">
 
-            <div class="varios-subcontainer" id="subConteiner2">
-              <div class="varios-subcontainer-header">
-                <h2>Recomendados</h2>
-              </div>
-              <div id="varios-subcontainer-body-2">
-              </div>
-            </div>
-
-            <div class="varios-subcontainer" id="subConteiner3">
-              <div class="varios-subcontainer-header">
-                <h2>Top Ventas</h2>
-              </div>
-              <div id="varios-subcontainer-body-3">
-              </div>
-            </div>
-
+          <div class="varios-subcontainer-header">
+            <h2>Ultimos Lanzamientos</h2>
           </div>
-        </section>
+          <div id="varios-subcontainer-body-1">
+          </div>
+        </div>
 
-       
-    </main>
+        <div class="varios-subcontainer" id="subConteiner2">
+          <div class="varios-subcontainer-header">
+            <h2>Recomendados</h2>
+          </div>
+          <div id="varios-subcontainer-body-2">
+          </div>
+        </div>
 
-    <footer id="Contacto">
-    </footer>
+        <div class="varios-subcontainer" id="subConteiner3">
+          <div class="varios-subcontainer-header">
+            <h2>Top Ventas</h2>
+          </div>
+          <div id="varios-subcontainer-body-3">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+  </main>
+
+  <footer id="Contacto">
+  </footer>
 </body>
+
 </html>

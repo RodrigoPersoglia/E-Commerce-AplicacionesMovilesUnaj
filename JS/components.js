@@ -197,3 +197,14 @@ export const CardCarrito = (id, portada, precio, nombre, desc, categoria, descri
         </div>
       </div>`
 }
+
+export const CardHistorial = (id,titulo, imagenUrl) => {
+  return `<div class="recientes" onclick="location.href='./product.html?id=${id}'">
+            <div class="recientes-body">
+              <img src="${imagenUrl}" alt="${titulo}">
+            </div>
+            <div class="recientes-footer">
+              <h3>${titulo}</h3>
+            </div>
+          </div>`
+}

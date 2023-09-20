@@ -11,7 +11,10 @@ window.onload = () => {
     header.html(NavMenu());
     contacto.html(Footer());
     const parametros = getQueryParams();
-    if(parametros.id!=undefined){productoId=parametros.id;}
+    if(parametros.id!=undefined){
+        productoId=parametros.id;
+        AddHistorial('historial',productoId)
+    }
     CargarProductos();
     $('#menu-oculto').click(MostrarMenu);
 }
@@ -102,6 +105,24 @@ const AddOrRemoveFavoritos = (nameItem,idProduct) => {
         else{
             localStorage.setItem(nameItem, JSON.stringify([idProduct]));
         }
+}
+
+const AddHistorial= (nameItem,idProduct) => {
+    let favoritos = localStorage.getItem(nameItem);
+    if(favoritos){
+        let list = JSON.parse(favoritos);
+        if (list.includes(idProduct)) {
+            list.splice(list.indexOf(idProduct),1)
+            list.unshift(idProduct);
+            ReemplazarLocalStorage(nameItem,list)
+          } else {
+            list.unshift(idProduct);
+            ReemplazarLocalStorage(nameItem,list)
+          }
+    }
+    else{
+        localStorage.setItem(nameItem, JSON.stringify([idProduct]));
+    }
 }
 
 const ReemplazarLocalStorage = (nameItem,list) =>  {

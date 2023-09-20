@@ -1,16 +1,18 @@
-import {NavMenu,NavMenu2,Footer,CardVarios} from './components.js'
+import {NavMenu,NavMenu2,Footer,CardVarios,CardHistorial} from './components.js'
 
 const header = $('#Menu');
 const contacto = $('#Contacto');
 const subcontainer1 = $('#varios-subcontainer-body-1');
 const subcontainer2 = $('#varios-subcontainer-body-2');
 const subcontainer3 = $('#varios-subcontainer-body-3');
+const subConteinerHistorial = $('#historial-body');
 let shortMenu = false;
 
 window.onload = () => {
     header.html(NavMenu());
     contacto.html(Footer());
     CargarVarios();
+    CargarHistorial();
     $('#menu-oculto').click(MostrarMenu);
 }
 
@@ -42,6 +44,24 @@ const CargarVarios = () => {
     });
 }
 
+const CargarHistorial = () => {
+    let list = GetHistorial();
+    if(list.length>6){
+        list = list.slice(0, 6);
+    }
+    list.forEach(productoId => {
+        let query =  `https://fakestoreapi.com/products/${productoId}`;
+        subConteinerHistorial.html=null;
+        fetch(query)
+        .then(response => response.json())
+        .then(e => {
+            subConteinerHistorial.append(CardHistorial(e.id,Recortar(e.title,28),e.image));
+            });    
+    });
+
+}
+
+
 const Recortar = (palabra,largo) => {
     if(palabra.length>largo){
         return palabra.substring(0,largo-3)+'...';
@@ -49,3 +69,8 @@ const Recortar = (palabra,largo) => {
     return palabra
 }
 
+const GetHistorial = () => {
+    let favoritos = localStorage.getItem('historial');
+    let list = JSON.parse(favoritos);
+    return list;       
+}
