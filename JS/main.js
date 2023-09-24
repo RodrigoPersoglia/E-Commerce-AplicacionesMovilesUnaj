@@ -61,7 +61,6 @@ const CargarHistorial = () => {
 
 }
 
-
 const Recortar = (palabra,largo) => {
     if(palabra.length>largo){
         return palabra.substring(0,largo-3)+'...';

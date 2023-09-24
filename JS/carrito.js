@@ -330,10 +330,11 @@ function inicializar() {
 
         if (emailError.textContent === '' && tarjetaError.textContent === '' &&
             nombreError.textContent === '' && fechaError.textContent === '' &&
-            codigoError.textContent === '' && dniError.textContent === '') 
-        {
+            codigoError.textContent === '' && dniError.textContent === '') {
+            
             modalContainer.style.display = 'none';
             enviarCorreo(emailInput);
+            localStorage.removeItem('carrito');
         }
     }
     function ValidarMail(email) {
@@ -360,36 +361,26 @@ function inicializar() {
         const limpiar = dni.replace(/\D/g, '');
         return limpiar.length >= 7 && limpiar.length <= 8;
     }
-
     function enviarCorreo(destinatario) {
         const asunto = 'E-Commerce Unaj';
-        const cuerpoProductos = obtenerProductosEnCarrito();
+        const precioTotal = precioCarrito.html();
+        const subtotal = subtotalCarrito.html();
+        const impuestoTotal = impuesto.html();
     
-        if (cuerpoProductos === "No hay productos en el carrito.") {
-            alert("No hay productos en el carrito.");
-            return;
-        }
+        const cuerpoMensaje = `
+    Estimado cliente,
     
-        const cuerpoMensaje = `Estimado cliente,\n\nUsted ha finalizado la compra con éxito. Aquí están los detalles de su compra:\n\n${cuerpoProductos}`;
+    Usted ha realizado la compra con éxito. A continuación, se muestra el resumen de su compra:
+    - Subtotal: ${precioTotal.replace(/&nbsp;/g, ' ')}
+    - Impuesto: ${impuestoTotal.replace(/&nbsp;/g, ' ')}
+    - Precio Total: ${subtotal.replace(/&nbsp;/g, ' ')}
+    
+    Gracias por elegir E-Commerce Unaj.
+    `;
     
         const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
         window.location.href = mailtoLink;
     }
 
-    function obtenerProductosEnCarrito() {
-        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    
-        if (carrito.length === 0) {
-            return "No hay productos en el carrito.";
-        }
-    
-        let mensaje = "Productos en el carrito:\n";
-    
-        for (const item of carrito) {
-            mensaje += `- ${item.id} x ${item.price * item.cantidad} cada uno)\n`;
-        }
-    
-        return mensaje;
-    }
 }
 
