@@ -246,7 +246,7 @@ export const modal =()=>
                         <div class="fecha-codigo">
                             <div class="form-group">
                                 <label for="fecha">Fecha de vencimiento</label>
-                                <input type="text" id="fechaInput" class="card-fecha" placeholder="MM/AA" required>
+                                <input type="text" id="fechaInput" class="card-fecha" placeholder="MM/AA" minlength="5" maxlength="5"required>
                                 <span class="span-fecha">Mes/año</span>
                                 <div id="fecha-error" class="error"></div>
                             </div>

@@ -99,7 +99,6 @@ const incrementarProductoDelCarrito = (productoId, precio) => {
 };
 
 const eliminarProductoDelCarrito = (productoId, precio) => {
-    alert('eliminar')
     Eliminar('carrito', productoId, false, precio)
 }
 
@@ -228,7 +227,11 @@ function inicializar() {
         });
 
         fechaInput.addEventListener("input", () => {
-            fechaElement.textContent = fechaInput.value;
+            let fecha = fechaInput.value.replace(/\D/g, '');
+            if (fecha.length >= 4) {
+                fecha = fecha.slice(0, 2) + '/' + fecha.slice(2, 4);
+            }
+            fechaElement.textContent = fecha;
         });
 
         codigoInput.addEventListener("input", () => {
@@ -327,14 +330,10 @@ function inicializar() {
 
         if (emailError.textContent === '' && tarjetaError.textContent === '' &&
             nombreError.textContent === '' && fechaError.textContent === '' &&
-            codigoError.textContent === '' && dniError.textContent === '') {
-            const confirmar = confirm('¿Desea finalizar la compra?');
-            if (confirmar) {
-                modalContainer.style.display = 'none';
-                enviarCorreo(emailInput);
-            } else {
-                alert('Ocurrió un error');
-            }
+            codigoError.textContent === '' && dniError.textContent === '') 
+        {
+            modalContainer.style.display = 'none';
+            enviarCorreo(emailInput);
         }
     }
     function ValidarMail(email) {
@@ -364,10 +363,33 @@ function inicializar() {
 
     function enviarCorreo(destinatario) {
         const asunto = 'E-Commerce Unaj';
-        const cuerpoMensaje = 'Estimado cliente,\n\n Usted ha finalizado la compra con éxito.';
-
+        const cuerpoProductos = obtenerProductosEnCarrito();
+    
+        if (cuerpoProductos === "No hay productos en el carrito.") {
+            alert("No hay productos en el carrito.");
+            return;
+        }
+    
+        const cuerpoMensaje = `Estimado cliente,\n\nUsted ha finalizado la compra con éxito. Aquí están los detalles de su compra:\n\n${cuerpoProductos}`;
+    
         const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
         window.location.href = mailtoLink;
+    }
+
+    function obtenerProductosEnCarrito() {
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    
+        if (carrito.length === 0) {
+            return "No hay productos en el carrito.";
+        }
+    
+        let mensaje = "Productos en el carrito:\n";
+    
+        for (const item of carrito) {
+            mensaje += `- ${item.id} x ${item.price * item.cantidad} cada uno)\n`;
+        }
+    
+        return mensaje;
     }
 }
 
