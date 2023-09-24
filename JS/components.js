@@ -165,7 +165,7 @@ export const CardProductoPrincipal = (nombre, portada, descripcion, precio, cate
 </div>`
 }
 
-export const CardCarrito = (id, portada, precio, nombre, desc, categoria, descripcion) => {
+export const CardCarrito = (id, portada, precio, nombre, categoria, descripcion, cantidad) => {
   return `
       <div class="carrito-card">
         <div class="carrito-card-imagen">
@@ -193,6 +193,9 @@ export const CardCarrito = (id, portada, precio, nombre, desc, categoria, descri
             <div class="carrito-card-footer">
                 <h2 id="${id}"class="eliminarBoton"
                 >Eliminar</h2>
+                <button class="decrementar" data-id="${id}">-</button>
+                <div class="cantidad" id="cantidad-${id}">${cantidad}</div>
+                <button class="incrementar" data-id="${id}">+</button>
             </div>
         </div>
       </div>`
@@ -207,4 +210,77 @@ export const CardHistorial = (id,titulo, imagenUrl) => {
               <h3>${titulo}</h3>
             </div>
           </div>`
+}
+
+export const modal =()=>
+{
+    return `
+    <div id="modalMain" class="modal">
+        <div class="modal-content">
+            <span class="close" id="cerrarModal">&times;</span>
+            <div class="container">
+                <div class="form">
+                    <h2>Formulario de Compra</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="e-mail">Email</label>
+                            <input type="text" id="e-mail" class="e-mail" placeholder="micorreo@mail.com" required>
+                            <span class="span-mail">Ingrese su direccion de mail.</span>
+                            <div id="email-error" class="error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tarjetaNumero">Número de tarjeta</label>
+                            <input type="text" id="tarjetaNumero" class="card-number" placeholder="**** **** **** ****" minlength="16" maxlength="16" required>
+                            <span class="span-tarjeta">Ingrese los 16 digitos de su tarjeta.</span>
+                            <div id="numero-error" class="error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tarjetaNombre">Nombre y apellido</label>
+                            <input type="text" id="tarjetaNombre" class="tarjetaNombre" placeholder="Nombre Apellido" required>
+                            <span class="span-nombre">Tal cual esté impreso en la tarjeta.</span>
+                            <div id="nombre-error"class="error"></div>
+                        </div>
+
+                        <div class="fecha-codigo">
+                            <div class="form-group">
+                                <label for="fecha">Fecha de vencimiento</label>
+                                <input type="text" id="fechaInput" class="card-fecha" placeholder="MM/AA" required>
+                                <span class="span-fecha">Mes/año</span>
+                                <div id="fecha-error" class="error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo">Código de seguridad</label>
+                                <input type="text" id="codigo" class="card-cvv" placeholder="***" minlength="3" maxlength="3" required>
+                                <span class="span-codigo">Los 3 números del dorso de tu tarjeta</span>
+                                <div id="codigo-error" class="error"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dni">DNI del titular de la tarjeta</label>
+                            <input type="text" id="dni" minlength="7" maxlength="8" required>
+                            <span class="span-dni">Ingrese su dni</span>
+                            <div id="dni-error" class="error"></div>
+                        </div>
+                    </form>
+                    <button id="comprarButton">Finalizar Compra</button>
+                    <button id="cancelarButton">Cancelar</button>
+                </div>
+                <div class="card">
+                    <div id="tarjetaDatos">
+                        <div class="tarjeta-numero-container">
+                            <p id="idTarjetaNumero" class="tarjeta-numero"></p>
+                        </div>
+                        <div class="tarjeta-detalles">
+                            <p id="idNombre" class="tarjeta-nombre">Nombre Apellido</p>
+                            <p id="idFecha" class="tarjeta-fecha">MM/AA</p>
+                            <p id="idCvv" class="tarjeta-cvv">***</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
 }

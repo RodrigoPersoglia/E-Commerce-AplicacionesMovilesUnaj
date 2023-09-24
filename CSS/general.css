@@ -176,71 +176,71 @@ h1{
 
 /*------------------------ Footer -------------------------*/
 
-footer{
+footer {
     padding: 2% 5% 1% 5%;
-    background-color: rgba(32,32,32,255);
+    background-color: rgba(32, 32, 32, 0.9);
     color: rgb(90, 90, 90);
-}
+  }
 
-footer a{
+  footer a {
     text-decoration: none;
     color: rgb(220, 220, 220);
     transition: 0.3s;
-}
+  }
 
-footer align-self a:hover{
-    color: rgba(0,116,228,255);
-}
+  footer a:hover {
+    color: rgba(0, 116, 228, 1);
+  }
 
-#redes-logos{
+  #redes-logos {
     font-size: 1.8rem;
-    margin: 0% 0% 3% 0%;
-}
+    margin: 0 0 3% 0;
+  }
 
-#redes-logos a{
+  #redes-logos a {
     margin-right: 1%;
-}
+  }
 
-.links-container{
+  .links-container {
     display: flex;
     gap: 5%;
-    margin: 1% 0% 4% 0%;
-}
+    margin: 1% 0 4% 0;
+  }
 
-.links-container div{
+  .links-container div {
     min-width: 15%;
-}
+  }
 
-.links-container a{
+  .links-container a {
     display: block;
     font-size: 0.9rem;
-}
+  }
 
-footer h2{
+  footer h2 {
     font-size: 1.2rem;
-}
+  }
 
-footer p{
+  footer p {
     max-width: 50%;
     font-size: 0.8rem;
     color: rgb(190, 190, 190);
-    margin: 4% 0% 2% 0%;
-}
+    margin: 4% 0 2% 0;
+  }
 
-#final-links{
-    margin: 4% 0% 3% 0%;
-}
+  #final-links {
+    margin: 4% 0 3% 0;
+  }
 
-#final-links a{
-    margin: 0% 2% 0% 0%;
+  #final-links a {
+    margin: 0 2% 0 0;
     font-size: 0.9rem;
-}
+  }
 
-#arrow{
+  #arrow {
     position: absolute;
     right: 5%;
     font-size: 175%;
-}
+  }
 
  
 /* ----------------main------------ */

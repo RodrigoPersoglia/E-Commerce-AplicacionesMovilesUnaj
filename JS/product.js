@@ -19,10 +19,6 @@ window.onload = () => {
     $('#menu-oculto').click(MostrarMenu);
 }
 
-const agregar = () => {
-    postCarrito('./product.html?id='+productoId)
-}
-
 const favoritos = () => {
     AddOrRemoveFavoritos('favoritos',productoId);
     if(!favoritosBTN){
@@ -37,6 +33,10 @@ const favoritos = () => {
     }
 }
 
+const agregar=()=>{
+    AgregarAlCarrito('carrito', productoId);
+    window.location.href = 'carrito.html';
+}
 
 const CargarProductos = () => {
     let text = ''
@@ -71,11 +71,6 @@ function getQueryParams() {
        urlParams[decode(match[1])] = decode(match[2]);
        return urlParams;
 };
-
-const postCarrito = (ruta) => {
-    alert('Producto Agregado');
-    location.href=ruta;
-}
 
 const MostrarMenu = () => {
     if(shortMenu) {
@@ -132,6 +127,24 @@ const ReemplazarLocalStorage = (nameItem,list) =>  {
 
 const IsFavorito = (idProduct) => {
     let favoritos = localStorage.getItem('favoritos');
-    let list = JSON.parse(favoritos);
-    return list.includes(idProduct)          
+    if (favoritos) {
+        let list = JSON.parse(favoritos);
+        return list.includes(idProduct);
+    } else {
+        return false; 
+    }
 }
+
+
+const AgregarAlCarrito = (nameItem, idProduct) => {
+    let carrito = localStorage.getItem(nameItem) ? JSON.parse(localStorage.getItem(nameItem)) : [];
+    for (var i = 0; i < carrito.length; i++) {
+        if (carrito[i].id === idProduct) {
+            carrito[i].cantidad++;
+            ReemplazarLocalStorage(nameItem,carrito);
+            return; 
+        }
+    }
+    carrito.push({ id: idProduct, cantidad: 1 });
+    ReemplazarLocalStorage(nameItem,carrito);
+};

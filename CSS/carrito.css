@@ -99,16 +99,17 @@
 
 
 
-.carrito-card-footer{
+.carrito-card-footer {
     margin-top: 1%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
 }
 
 
-.eliminarBoton{
+.eliminarBoton {
     font-size: 1rem;
+    margin-right: 5px; 
 }
 
 .eliminarBoton:hover{
@@ -197,11 +198,6 @@
     font-size: 2rem;
 }
 
-.modal-content{
-    color: #262626;
-    background-color: rgba(42,42,42,255);
-}
-
 .carrito-card-header-precio{
     align-items: center;
     min-width: 30%;
@@ -270,3 +266,198 @@
     }
 
   }
+
+  .modal-content {
+    background-color: white;
+    display: flex;
+    color: #262626;
+    padding: 10px; /* Reducido el padding para hacerlo más pequeño */
+    gap: 10px; /* Reducido el espacio entre elementos internos */
+    border-radius: 3px;
+    align-items: center;
+    width: 40%; /* Reducido el ancho a un valor específico */
+    position: fixed;
+    top: 166px;
+    left: 95px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 95%;
+}
+
+.form {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-right: 40px;
+}
+
+.form label {
+    font-size: 14px;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.form-group span {
+    margin-top: 5px;
+    font-size: 12px;
+    color: gray;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group{
+    margin-top:10px;
+}
+
+.card {
+    /* width: 45%; */
+    /* max-height: 200px; */
+    width: 300px;
+    height: 180px;
+    background-image: url("../Imagenes/tarjeta.jpeg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+}
+
+
+/*tarjeta*/
+.tarjeta-numero{
+    font-size: 20px;
+    margin: 0px 0px 6px 20px;
+}
+
+.tarjeta-detalles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tarjeta-nombre{
+    font-size: 16px;
+    margin: 0px 30px 15px 0px;
+}
+
+.tarjeta-fecha, .tarjeta-cvv{
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+#tarjetaDatos {
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start; */
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#comprarButton, #cancelarButton {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#comprarButton:hover, #cancelarButton:hover {
+    background-color: #3498db;
+}
+
+#abrirModal {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#abrirModal:hover {
+    background-color: #2980b9;
+}
+
+
+.card-number-container {
+    width: 100%;
+}
+
+.tarjeta-detalles-container {
+    width: 100%;
+}
+
+#idNombre {
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+#idFecha {
+    margin-right: 10px;
+}
+
+#idCvv {
+    margin-left: 10px;
+}
+
+
+.error {
+    color: red;
+}
+.mensaje-ayuda{
+    color: gray;
+}
+
+
+.decrementar,
+.incrementar {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 5px; 
+}
+
+.decrementar:hover,
+.incrementar:hover {
+    background-color: #0056b3;
+}
