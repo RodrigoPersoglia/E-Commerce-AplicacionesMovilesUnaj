@@ -335,6 +335,8 @@ function inicializar() {
             modalContainer.style.display = 'none';
             enviarCorreo(emailInput);
             localStorage.removeItem('carrito');
+            cargarCarrito();
+            window.scrollTo(0,0)
         }
     }
     function ValidarMail(email) {

@@ -66,7 +66,10 @@ function precios() {
             minPrice = precioMinimo.value;
             maxPrice = precioMaximo.value;
         }
-        else { alert('El precio máximo no puede ser inferior al precio mínimo') }
+        else { 
+            precioMinimo.value = null;
+            maxPrice = precioMaximo.value;
+        }
     }
     else {
         if (precioMinimo.value != '') { minPrice = precioMinimo.value; }

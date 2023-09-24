@@ -74,11 +74,7 @@ export const Footer = () => {
     </div>
     <hr>
 
-    <p>© 2023, Unaj E-Commerce, Inc. Todos los derechos reservados. Unaj, Unaj E-Commerce, 
-      el logotipo de Unaj E-Commerce son marcas comerciales o marcas registradas de Unaj 
-      , Inc. tanto en Estados Unidos de América como en el resto del mundo. Otras marcas o nombres 
-      de productos son marcas comerciales de sus respectivos propietarios. Las transacciones fuera de 
-      EE. UU. se realizan a través de Unaj International</p>
+    <p>© 2023, Unaj E-Commerce, Inc. Todos los derechos reservados. Unaj, Unaj E-Commerce, el logotipo de Unaj E-Commerce son marcas comerciales o marcas registradas de Unaj, Inc. tanto en Estados Unidos de América como en el resto del mundo. Otras marcas o nombres de productos son marcas comerciales de sus respectivos propietarios. Las transacciones fuera de EE. UU. se realizan a través de Unaj International</p>
 
       <div id="final-links">
         <a href="">Terminos de servicios</a>

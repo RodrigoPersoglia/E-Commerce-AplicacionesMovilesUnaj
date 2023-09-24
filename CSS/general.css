@@ -216,7 +216,6 @@ footer h2 {
 }
 
 footer p {
-  max-width: 50%;
   font-size: 0.8rem;
   color: rgb(190, 190, 190);
   margin: 4% 0 2% 0;
@@ -224,6 +223,9 @@ footer p {
 
 #final-links {
   margin: 4% 0 3% 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 #final-links a {
