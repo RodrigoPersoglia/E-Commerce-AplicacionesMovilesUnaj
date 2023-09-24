@@ -1,15 +1,16 @@
-import {NavMenu,NavMenu2,Footer,CardCarrito, modal} from './components.js'
+import { NavMenu, NavMenu2, Footer, CardCarrito, modal } from './components.js'
 
 const header = $('#Menu');
 const contacto = $('#Contacto');
 const carritoContainer = $('#carrito-card-container');
 const precioCarrito = $('#precio-total');
 const subtotalCarrito = $('#subtotal');
-const impuesto= $('#impuesto');
-const descuentoResumen= $('#descuento');
-const botonComprar= $('#boton-comprar');
-const carritovacio= $('#carrito-null');
-const carritoInfo= $('#carrito');
+const impuesto = $('#impuesto');
+const descuentoResumen = $('#descuento');
+const botonComprar = $('#boton-comprar');
+const carritovacio = $('#carrito-null');
+const carritoInfo = $('#carrito');
+const carritoHeader = $('#carrito-header');
 
 var botones = document.querySelectorAll(".eliminarBoton");
 var botonesIncrementar = document.querySelectorAll('.incrementar-btn');
@@ -18,27 +19,26 @@ var botonesDecrementar = document.querySelectorAll('.decrementar-btn');
 let shortMenu = false;
 
 let subtotal = 0;
-let imp=0;
-let descuento=0;
+let imp = 0;
+let descuento = 0;
 
 window.onload = () => {
     header.append(NavMenu());
     contacto.append(Footer());
-    // CargarCarrito();
-    cargarCarritoDesdeLocalStorage();
+    cargarCarrito();
     inicializar();
     $('#menu-oculto').click(MostrarMenu);
 }
 
-const ResumenCompra = (precio, impues,desc) =>{
+const ResumenCompra = (precio, impues, desc) => {
     precioCarrito.html(`${Redondeo(precio)}`);
-    subtotalCarrito.html(`${Redondeo(precio+impues-desc)}`);
+    subtotalCarrito.html(`${Redondeo(precio + impues - desc)}`);
     impuesto.html(`${Redondeo(impues)}`);
     descuentoResumen.html(`${Redondeo(desc)}`);
 }
 
-const Redondeo = (numero) =>{
-    return numero.toLocaleString('fr-FR', {style: 'currency',currency: 'USD', minimumFractionDigits: 2})
+const Redondeo = (numero) => {
+    return numero.toLocaleString('fr-FR', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 })
 
 }
 
@@ -92,14 +92,14 @@ const ReemplazarLocalStorage = (nameItem, list) => {
 
 const decrementarProductoDelCarrito = (productoId, precio) => {
     AumentarDecrementar('carrito', productoId, false, precio);
-    cargarCarritoDesdeLocalStorage();
-  };
+};
 
 const incrementarProductoDelCarrito = (productoId, precio) => {
     AumentarDecrementar('carrito', productoId, true, precio);
-  };
+};
 
-  const eliminarProductoDelCarrito = (productoId, precio)=>{
+const eliminarProductoDelCarrito = (productoId, precio) => {
+    alert('eliminar')
     Eliminar('carrito', productoId, false, precio)
 }
 
@@ -118,47 +118,42 @@ const AumentarDecrementar = (nameItem, idProduct, aumentar, precio) => {
                 }
             }
             ReemplazarLocalStorage(nameItem, carrito);
+            cargarCarrito();
         }
     }
-    subtotal += aumentar ? precio : -precio;
-    imp = subtotal * 0.21;
-    ResumenCompra(subtotal, imp, descuento);
+
 }
 
-const Eliminar = (nameItem, idProduct, eliminar, precio) => {
+const Eliminar = (nameItem, idProduct) => {
     let carrito = localStorage.getItem(nameItem) ? JSON.parse(localStorage.getItem(nameItem)) : [];
-
     for (var i = 0; i < carrito.length; i++) {
         if (carrito[i].id == idProduct) {
-            if (eliminar) {
-                carrito[i].cantidad = 1
-                carrito.splice(i, cantidad);
-            }
-            ReemplazarLocalStorage(nameItem, carrito);
+            carrito.splice(i, 1);
         }
     }
-    subtotal -= precio; 
-    imp = subtotal * 0.21;
-    ResumenCompra(subtotal, imp, descuento);
+    ReemplazarLocalStorage(nameItem, carrito);
+    cargarCarrito();
 }
 
 
-const cargarCarritoDesdeLocalStorage = async () => {
+const cargarCarrito = async () => {
+    subtotal = 0;
+    imp = 0;
+    descuento = 0;
     carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    console.log(carrito);
     const carritovacio = $('#carrito-null')[0];
-    const carritoInfo = $('#carrito')[0]; 
+    const carritoInfo = $('#carrito')[0];
 
     if (esCarritoVacio()) {
         if (carritovacio) {
             carritovacio.style.display = 'block';
         }
         if (carritoInfo) {
-            carritoInfo.style.display = 'none'; 
+            carritoInfo.style.display = 'none';
         }
     } else {
         if (carritoInfo) {
-            carritoInfo.style.display = 'block'; 
+            carritoInfo.style.display = 'block';
         }
         if (carritovacio) {
             carritovacio.style.display = 'none';
@@ -178,39 +173,29 @@ const esCarritoVacio = () => {
     return carrito.length === 0;
 }
 
-
-// const eliminarProductoDelCarrito = (productoId) => {
-//     AumentarDecrementar('carrito', productoId, false, 0);
-//     cargarCarritoDesdeLocalStorage(); // Actualiza la vista del carrito
-
-//     // Elimina el producto del localStorage
-//     let carrito = localStorage.getItem('carrito') ? JSON.parse(localStorage.getItem('carrito')) : [];
-//     const nuevoCarrito = carrito.filter(item => item.id !== productoId);
-//     ReemplazarLocalStorage('carrito', nuevoCarrito);
-// };
-
-function MostrarMenu(){
-    if(shortMenu) {
+function MostrarMenu() {
+    if (shortMenu) {
         header.html(NavMenu());
         shortMenu = false;
     }
-    else{
+    else {
         header.html(NavMenu2());
         shortMenu = true;
-    }  
+    }
     $('#menu-oculto').click(MostrarMenu);
 }
 
 function inicializar() {
-    var maxScrollPixels = 480;
     const abrirModalButton = document.getElementById('abrirModal');
     const modalContainer = document.getElementById('modalContainer');
-    
+
     abrirModalButton.addEventListener('click', () => {
+        carritoInfo.hide();
+        carritoHeader.hide();
         const modalHTML = modal();
         modalContainer.innerHTML = modalHTML;
         modalContainer.style.display = 'block';
-        
+
         const comprarButton = modalContainer.querySelector('#comprarButton');
         const cancelarButton = modalContainer.querySelector('#cancelarButton');
 
@@ -256,11 +241,13 @@ function inicializar() {
 
         cancelarButton.addEventListener('click', () => {
             modalContainer.style.display = 'none';
+            carritoInfo.show();
+            carritoHeader.show();
         });
     });
     window.addEventListener('click', (evento) => {
         if (evento.target === modalContainer) {
-            modalContainer.style.display = 'none'; 
+            modalContainer.style.display = 'none';
         }
     });
 
@@ -271,46 +258,46 @@ function inicializar() {
         const codigoInput = document.getElementById("codigo");
         const emailInput = document.getElementById('e-mail').value;
         const dniInput = document.getElementById('dni').value;
-    
+
         const emailError = document.getElementById('email-error');
         const tarjetaError = document.getElementById('numero-error');
         const nombreError = document.getElementById('nombre-error');
         const fechaError = document.getElementById('fecha-error');
         const codigoError = document.getElementById('codigo-error');
         const dniError = document.getElementById('dni-error');
-    
+
         emailError.textContent = '';
         tarjetaError.textContent = '';
         nombreError.textContent = '';
         fechaError.textContent = '';
         codigoError.textContent = '';
         dniError.textContent = '';
-    
+
         if (emailInput === '') {
             emailError.textContent = 'El campo de correo electrónico es requerido';
-            document.querySelector('.span-mail').style.display = 'none'; 
+            document.querySelector('.span-mail').style.display = 'none';
         } else if (!ValidarMail(emailInput)) {
             emailError.textContent = 'El correo electrónico es inválido';
             document.querySelector('.span-mail').style.display = 'none';
 
         }
-    
+
         if (tarjetaNumeroInput.value === '') {
             tarjetaError.textContent = 'El campo número de tarjeta es requerido';
             document.querySelector('.span-tarjeta').style.display = 'none';
         } else if (!ValidarTarjeta(tarjetaNumeroInput.value)) {
             tarjetaError.textContent = 'El número de tarjeta es inválido';
-            document.querySelector('.span-tarjeta').style.display = 'none'; 
+            document.querySelector('.span-tarjeta').style.display = 'none';
         }
-    
+
         if (tarjetaNombreInput.value === '') {
             nombreError.textContent = 'El campo de nombre es requerido';
-            document.querySelector('.span-nombre').style.display = 'none'; 
+            document.querySelector('.span-nombre').style.display = 'none';
         } else if (!ValidarNombre(tarjetaNombreInput.value)) {
             nombreError.textContent = 'El nombre debe contener solo letras';
-            document.querySelector('.span-nombre').style.display = 'none'; 
+            document.querySelector('.span-nombre').style.display = 'none';
         }
-    
+
         if (fechaInput.value === '') {
             fechaError.textContent = 'El campo de fecha es requerido';
             document.querySelector('.span-fecha').style.display = 'none';
@@ -318,26 +305,26 @@ function inicializar() {
             const [mes, año] = fechaInput.value.split('/').map(Number);
             if (isNaN(mes) || isNaN(año) || mes < 1 || mes > 12 || año < 23 || año > 30) {
                 fechaError.textContent = 'Fecha inválida.';
-                document.querySelector('.span-fecha').style.display = 'none'; 
+                document.querySelector('.span-fecha').style.display = 'none';
             }
         }
-    
+
         if (codigoInput.value === '') {
             codigoError.textContent = 'El campo código de seguridad es requerido';
-            document.querySelector('.span-codigo').style.display = 'none'; 
+            document.querySelector('.span-codigo').style.display = 'none';
         } else if (!ValidarCode(codigoInput.value)) {
             codigoError.textContent = 'El número de tarjeta es inválido';
-            document.querySelector('.span-codigo').style.display = 'none'; 
-                }
-    
+            document.querySelector('.span-codigo').style.display = 'none';
+        }
+
         if (dniInput === '') {
             dniError.textContent = 'El campo DNI es requerido';
-            document.querySelector('.span-dni').style.display = 'none'; 
+            document.querySelector('.span-dni').style.display = 'none';
         } else if (!ValidarDNI(dniInput)) {
             dniError.textContent = 'El DNI es inválido';
-            document.querySelector('.span-dni').style.display = 'none'; 
+            document.querySelector('.span-dni').style.display = 'none';
         }
-    
+
         if (emailError.textContent === '' && tarjetaError.textContent === '' &&
             nombreError.textContent === '' && fechaError.textContent === '' &&
             codigoError.textContent === '' && dniError.textContent === '') {
@@ -361,7 +348,7 @@ function inicializar() {
     }
 
     function ValidarNombre(nombre) {
-        const nombreRegex = /^[a-zA-Z\s]+$/; 
+        const nombreRegex = /^[a-zA-Z\s]+$/;
         return nombreRegex.test(nombre);
     }
 
@@ -378,16 +365,9 @@ function inicializar() {
     function enviarCorreo(destinatario) {
         const asunto = 'E-Commerce Unaj';
         const cuerpoMensaje = 'Estimado cliente,\n\n Usted ha finalizado la compra con éxito.';
-    
+
         const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpoMensaje)}`;
         window.location.href = mailtoLink;
     }
-    window.addEventListener('scroll', function() {
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    
-        if (scrollTop >= maxScrollPixels) {
-            modalContainer.style.display = 'none';
-        }
-    });
 }
 

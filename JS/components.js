@@ -191,11 +191,12 @@ export const CardCarrito = (id, portada, precio, nombre, categoria, descripcion,
                 </div>
             </div>
             <div class="carrito-card-footer">
-                <h2 id="${id}"class="eliminarBoton"
-                >Eliminar</h2>
+                <div class="cantidad-carrito">
                 <button class="decrementar" data-id="${id}">-</button>
                 <div class="cantidad" id="cantidad-${id}">${cantidad}</div>
                 <button class="incrementar" data-id="${id}">+</button>
+                </div>
+                <h2 id="${id}"class="eliminarBoton">Eliminar</h2>
             </div>
         </div>
       </div>`
@@ -217,7 +218,6 @@ export const modal =()=>
     return `
     <div id="modalMain" class="modal">
         <div class="modal-content">
-            <span class="close" id="cerrarModal">&times;</span>
             <div class="container">
                 <div class="form">
                     <h2>Formulario de Compra</h2>
