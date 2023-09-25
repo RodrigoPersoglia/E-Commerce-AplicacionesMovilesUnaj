@@ -2,7 +2,7 @@ import {NavMenu,NavMenu2,Footer,CardProductoPrincipal} from './components.js'
 
 const header = $('#header-page');
 const contacto = $('#footer-page');
-const main = $('#main');
+const main = $('#main-page');
 let productoId=null;
 let shortMenu = false;
 let favoritosBTN;
