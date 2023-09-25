@@ -35,7 +35,7 @@ export const NavMenu2 = () => {
 }
 
 export const Footer = () => {
-  return `<div id="redes-logos">
+  return `<div class="footer-main"><div class="footer-left"><div id="redes-logos">
       <a Target="_blank" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
       <a Target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
       <a Target="_blank" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
@@ -67,11 +67,11 @@ export const Footer = () => {
       <div>
         <a href="">Gerónimo Bazan</a>
       </div>
-    </div>
+    </div></div>
     <div class="map-conteiner">
      <h2>Visitanos</h2>
-      <div id="mi_mapa" style="width: 250px; height: 250px;"></div>
-    </div>
+      <div id="mi_mapa"></div>
+    </div></div>
     <hr>
 
     <p>© 2023, Unaj E-Commerce, Inc. Todos los derechos reservados. Unaj, Unaj E-Commerce, el logotipo de Unaj E-Commerce son marcas comerciales o marcas registradas de Unaj, Inc. tanto en Estados Unidos de América como en el resto del mundo. Otras marcas o nombres de productos son marcas comerciales de sus respectivos propietarios. Las transacciones fuera de EE. UU. se realizan a través de Unaj International</p>
