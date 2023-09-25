@@ -1,12 +1,12 @@
 export const NavMenu = () => {
-  return `<div id="top-header">
+  return `<header id="top-header">
         <div id="logo">
             <img src="../Imagenes/logo.png" alt="logo">
             <h1>Unaj E-Commerce</h1>
         </div>
-    </div>
-    <div id="fixed-header-container">
-        <div id="fixed-header">
+    </header>
+    <nav id="nav-container">
+        <div id="nav-left">
           <form class="search-bar" action="./search.html?">
             <input id="Busqueda" type="text" placeholder="Buscar..." name="product">
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -16,7 +16,7 @@ export const NavMenu = () => {
         </div>
         <a class="opcionesMenu" id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a>
         <i id="menu-oculto" class="fas fa-bars"></i>
-    </div>`
+    </nav>`
 }
 
 export const NavMenu2 = () => {
@@ -26,7 +26,7 @@ export const NavMenu2 = () => {
           <h1>Unaj E-Commerce</h1>
       </div>
   </div>
-  <div id="header-container">      
+  <div id="header-container-short">      
         <a class="opcionesMenu2" href="../HTML/index.html"><i class="fas fa-home"></i><p>Home</p></a>
         <a class="opcionesMenu2" href="../HTML/search.html"><i class="fas fa-sliders-h"></i><p>Busqueda</p></a>
         <a class="opcionesMenu2" id="carrito-link" href="../HTML/carrito.html"><i class="fas fa-shopping-cart"></i><p>Carrito</p></a> 
