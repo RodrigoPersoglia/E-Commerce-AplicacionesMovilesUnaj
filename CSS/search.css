@@ -1,6 +1,5 @@
 /*-------------------------- main ----------------------*/
 
-
 #categorias-populares,
 #favoritos-container {
     color: #262626
@@ -54,8 +53,6 @@
     flex-direction: column;
     align-items: center;
 }
-
-
 
 #categorias-populares-container a:hover {
     box-shadow: 5px 5px 10px #888888;
@@ -205,7 +202,6 @@
     box-shadow: 5px 5px 10px #888888;
 }
 
-
 .producto-info-1-text {
     padding: 3% 3% 3% 3%;
     min-height: 110px;
@@ -216,7 +212,6 @@
     justify-content: space-between;
     min-height: 50px;
 }
-
 
 .producto-info-1 img {
     height: 200px;

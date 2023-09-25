@@ -216,6 +216,7 @@
     align-items: center;
 }
 
+/* ------------- Modal -------------- */
 
 .modal-content {
     background-color: white;
@@ -304,7 +305,7 @@
 
 
 
-/*tarjeta*/
+/* ------------- Tarjeta -------------- */
 .tarjeta-numero {
     font-size: 20px;
     margin: 0px 0px 6px 20px;

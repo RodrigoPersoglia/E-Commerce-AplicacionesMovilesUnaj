@@ -22,7 +22,7 @@ const limpiarFiltros = $('#right-header');
 const favoritos = $('#favoritos-container');
 const pagIni = $('#pag-ini');
 const pagFin = $('#pag-fin');
-const filtrosShow= $('#filtros-show');
+const filtrosShow = $('#filtros-show');
 const filtros = $('#filtros');
 const filtrosLimpiar = $('#filtros-limpiar');
 
@@ -66,7 +66,7 @@ function precios() {
             minPrice = precioMinimo.value;
             maxPrice = precioMaximo.value;
         }
-        else { 
+        else {
             precioMinimo.value = null;
             maxPrice = precioMaximo.value;
         }
@@ -266,15 +266,15 @@ siguiente.addEventListener('click', () => {
 });
 
 
-function OcultarFiltros(){
-    if(filtrosVisibles){      
+function OcultarFiltros() {
+    if (filtrosVisibles) {
         filtros.hide();
         filtrosLimpiar.hide();
         filtrosVisibles = false;
     }
-    else{
+    else {
         filtros.show();
-        filtrosLimpiar.show();        
+        filtrosLimpiar.show();
         filtrosVisibles = true;
     }
 
