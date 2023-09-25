@@ -90,21 +90,21 @@
 
 /* ----------------------- Seccion Principal ---------------------------*/
 
-#seccion-principal {
+#busqueda-container {
     margin: 2% 2% 0% 2%;
 }
 
-#seccion-principal a {
+#busqueda-container a {
     text-decoration: none;
     color: #262626;
 }
 
-#seccion-principal-header {
+#busqueda-container-header {
     display: flex;
     color: #262626;
 }
 
-#seccion-principal-header h2 {
+#busqueda-container-header h2 {
     font-size: 1.1rem;
 }
 
