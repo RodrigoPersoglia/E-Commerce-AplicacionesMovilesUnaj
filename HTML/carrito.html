@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,25 +13,26 @@
     <link rel="icon" href="../Imagenes/logo.png">
     <script type="module" src="../JS/carrito.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 </head>
+
 <body>
     <div id="header-page">
     </div>
 
     <main>
-        <section id="carrito-header">
+        <div id="carrito-header">
             <h2>Mi Carrito</h2>
-        </section>
+        </div>
 
-        <section id="carrito">
+        <div id="carrito">
             <div id="carrito-container">
 
                 <div class="carrito-card-container" id="carrito-card-container">
                 </div>
-    
+
                 <div class="carrito-info">
                     <div class="carrito-info-header">
                         <h2>Resumen de Compra</h2>
@@ -56,22 +58,24 @@
                         <button id="abrirModal">Comprar</button>
                     </div>
                 </div>
-                <!-- <div id="modalContainer"></div> -->
-
             </div>
 
-        </section>
+        </div>
+
         <div id="modalContainer"></div>
-        <section id="carrito-null">
+
+        <div id="carrito-null">
             <div class="carrito-null-container">
                 <img src="../Imagenes/CarritoNull.jpeg" alt="Carro Not Found">
                 <h2>Tu carrito está vacio</h2>
                 <a href="./index.html">Comprar</a>
             </div>
-        </section>
+        </div>
+
     </main>
 
     <div id="footer-page">
     </div>
 </body>
+
 </html>
