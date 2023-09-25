@@ -1,6 +1,5 @@
 /* ------------------------ main ---------------------------*/
 
-
 #producto h2 {
     font-size: 1.5em;
     margin-bottom: 1rem;
@@ -27,7 +26,6 @@ justify-content: space-evenly;
     font-size: 150%;
 }
 
-
 .descripcion h3{
     font-size: 1.3rem;
     text-align: center;
@@ -44,13 +42,11 @@ justify-content: space-evenly;
     border-radius:15px;
 }
 
-
 #precio h2{
     margin-top: 1rem;
     font-size: 200%;
     text-align: center;
 }
-
 
 .searchButton{
     margin-top: 5%;
@@ -112,15 +108,6 @@ justify-content: space-evenly;
 #logout:hover{
     cursor: pointer;
     color: rgba(0,116,228,255);
-}
-
-header{
-    position:fixed;
-    top: 0;
-    right: 0; 
-    left:0;
-    z-index: 10; 
-    background-color: #121212
 }
 
 @media (max-width: 700px) {

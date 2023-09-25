@@ -95,7 +95,7 @@ export const Footer = () => {
 
 export const Card = (id, nombre, precio, imagenUrl) => {
   return `
-    <div class="producto-info-1" onclick="location.href='./product.html?id=${id}'">
+    <article class="producto-info-1" onclick="location.href='./product.html?id=${id}'">
       <img src="${imagenUrl}" alt="">
       <div class="producto-info-1-text">
         <h2 id="ofertas-producto-titulo">${nombre}</h2>
@@ -103,21 +103,21 @@ export const Card = (id, nombre, precio, imagenUrl) => {
           <h3 id="ofertas-producto-precio">${precio}</h3>
         </div>
       </div>
-    </div>
+    </article>
   `
 }
 
 
 export const CardVarios = (id, nombre, precio, imagenUrl) => {
-  return `<div class="varios-" onclick="location.href='./product.html?id=${id}'">
-  <img src="${imagenUrl}" alt="">
+  return `<article class="varios-" onclick="location.href='./product.html?id=${id}'">
+  <img src="${imagenUrl}" alt="${nombre}">
   <div class="varios--info">
     <h2>${nombre}</h2>
     <div class="varios--info-precio">
       <h3>${precio}</h3>
     </div>
   </div>
-</div>`
+</article>`
 }
 
 export const CardCategory = (nombre, imagenUrl) => {
@@ -130,7 +130,7 @@ export const CardCategory = (nombre, imagenUrl) => {
 }
 
 export const CardProductoPrincipal = (nombre, portada, descripcion, precio, categoria, stock, textButton) => {
-  return `<div id="producto">
+  return `<article id="producto">
   <div class="producto-header">
     <h2>${nombre}</h2>
     <img src="${portada}" alt="Icono del Producto">
@@ -157,18 +157,16 @@ export const CardProductoPrincipal = (nombre, portada, descripcion, precio, cate
       <hr>
   </div>
 </div>
-
-</div>`
+</article>`
 }
 
 export const CardCarrito = (id, portada, precio, nombre, categoria, descripcion, cantidad) => {
   return `
-      <div class="carrito-card">
+      <article class="carrito-card">
         <div class="carrito-card-imagen">
             <img onclick="" src="${portada}" alt="portada">
         </div>
         <div class="carrito-card-content">
-
             <div class="carrito-card-header">
                 <div class="carrito-card-info-categoria">
                     <h3>${categoria}</h3>
@@ -195,18 +193,18 @@ export const CardCarrito = (id, portada, precio, nombre, categoria, descripcion,
                 <h2 id="${id}"class="eliminarBoton">Eliminar</h2>
             </div>
         </div>
-      </div>`
+      </article>`
 }
 
 export const CardHistorial = (id,titulo, imagenUrl) => {
-  return `<div class="recientes" onclick="location.href='./product.html?id=${id}'">
+  return `<article class="recientes" onclick="location.href='./product.html?id=${id}'">
             <div class="recientes-body">
               <img src="${imagenUrl}" alt="${titulo}">
             </div>
             <div class="recientes-footer">
               <h3>${titulo}</h3>
             </div>
-          </div>`
+          </article>`
 }
 
 export const modal =()=>
