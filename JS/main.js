@@ -1,7 +1,7 @@
 import {NavMenu,NavMenu2,Footer,CardVarios,CardHistorial} from './components.js'
 
 const header = $('#header-page');
-const contacto = $('#Contacto');
+const contacto = $('#footer-page');
 const subcontainer1 = $('#varios-subcontainer-body-1');
 const subcontainer2 = $('#varios-subcontainer-body-2');
 const subcontainer3 = $('#varios-subcontainer-body-3');
