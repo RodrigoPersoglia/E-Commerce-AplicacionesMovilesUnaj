@@ -16,7 +16,7 @@ body {
 }
 
 /* ------------------------ header ---------------------------*/
-header {
+#header-page {
   position: fixed;
   top: 0;
   right: 0;

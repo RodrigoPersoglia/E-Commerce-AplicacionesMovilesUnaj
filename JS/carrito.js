@@ -1,6 +1,6 @@
 import { NavMenu, NavMenu2, Footer, CardCarrito, modal } from './components.js'
 
-const header = $('#Menu');
+const header = $('#header-page');
 const contacto = $('#Contacto');
 const carritoContainer = $('#carrito-card-container');
 const precioCarrito = $('#precio-total');

@@ -1,6 +1,6 @@
 import {NavMenu,NavMenu2,Footer,CardProductoPrincipal} from './components.js'
 
-const header = $('#Menu');
+const header = $('#header-page');
 const contacto = $('#Contacto');
 const main = $('#main');
 let productoId=null;
